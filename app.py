@@ -677,16 +677,16 @@ threading.Thread(target=_bg_refresh, daemon=True).start()
 def get_context(state="federal"):
     with _blog_lock:
         content = _cache["content"] if _cache["content"] else ""
-    s = STATE_DATA.get(state, STATE_DATA["federal"])
-    state_fallback = s["fallback"]
+    state_data = STATE_DATA.get(state, STATE_DATA["federal"])
+    state_fallback = state_data["fallback"]
     if content:
         return content + "\n\nSTATE CONTEXT:\n" + state_fallback
     return state_fallback
 
 # ── LLM ─────────────────────────────────────────────────────
 def _focus_prompt(state="federal"):
-    s = STATE_DATA.get(state, STATE_DATA["federal"])
-    return s["focus_prompt"]
+    state_data = STATE_DATA.get(state, STATE_DATA["federal"])
+    return state_data["focus_prompt"]
 
 
 def _llm_via_groq(full_system, user):
@@ -1664,12 +1664,12 @@ def do_assessment_prep():
         if err:
             return err, code
         state = d.get('state', 'federal')
-        s = STATE_DATA.get(state, STATE_DATA['federal'])
+        state_data = STATE_DATA.get(state, STATE_DATA['federal'])
         standard = d.get('standard', '').strip()
         std = standard if standard else "appropriate grade-level standard"
-        assessment_name = s['assessment_name']
+        assessment_name = state_data['assessment_name']
         return jsonify(result=llm(
-            s['assessment_system_prompt'],
+            state_data['assessment_system_prompt'],
             f"Create {d['num']} {d['qtype']} {assessment_name} practice questions. Grade: {d['grade']} | Subject: {d['subject']} | Standard: {std}\n\nFor each:\n❓ QUESTION\n🅐 Answer choices (if MC)\n✅ CORRECT ANSWER\n💡 EXPLANATION\n📋 STANDARD ALIGNMENT",
             state,
         ))
