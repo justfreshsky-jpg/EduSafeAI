@@ -45,7 +45,7 @@ FALLBACK = """
 """
 
 
-import json as _json
+import json
 
 # ── SHARED STANDARD SETS ────────────────────────────────────
 _CCSS_ELA_STDS = {
@@ -602,10 +602,10 @@ def _build_state_config():
             "science_label": s["science_label"],
             "standards": {
                 "Social Studies": {
-                    "K-2": s.get("ss_standards", _GENERIC_SS_STDS).get("K-2", _GENERIC_SS_STDS["K-2"]),
-                    "3-5": s.get("ss_standards", _GENERIC_SS_STDS).get("3-5", _GENERIC_SS_STDS["3-5"]),
-                    "6-8": s.get("ss_standards", _GENERIC_SS_STDS).get("6-8", _GENERIC_SS_STDS["6-8"]),
-                    "9-12": s.get("ss_standards", _GENERIC_SS_STDS).get("9-12", _GENERIC_SS_STDS["9-12"]),
+                    "K-2": s.get("ss_standards", _GENERIC_SS_STDS)["K-2"],
+                    "3-5": s.get("ss_standards", _GENERIC_SS_STDS)["3-5"],
+                    "6-8": s.get("ss_standards", _GENERIC_SS_STDS)["6-8"],
+                    "9-12": s.get("ss_standards", _GENERIC_SS_STDS)["9-12"],
                 },
                 "ELA": s["ela_standards"],
                 "Math": s["math_standards"],
@@ -1429,17 +1429,6 @@ const STATE_CONFIG = {{ state_config_json | safe }};
 let currentState = 'federal';
 let STANDARDS = STATE_CONFIG['federal'].standards;
 
-// Legacy STANDARDS object kept for Health/WorldLanguages/TechCS tabs (not in STATE_CONFIG per-state)
-const STANDARDS_EXTRA={
-  "Social Studies":{"K-2":[{code:"6.1.2.CivicsPD.1",desc:"Civics: Students explain how classroom rules and school rules help everyone"},{code:"6.1.2.GeoPP.1",desc:"Geography: Describe how location affects daily life"},{code:"6.1.2.EconET.1",desc:"Economics: Explain how people earn, save, and spend money"},{code:"6.1.2.HistoryCC.1",desc:"History: Place events in chronological order using timelines"}],"3-5":[{code:"6.1.5.CivicsPD.1",desc:"Civics: Explain how democratic processes work in the US"},{code:"6.1.5.GeoPP.2",desc:"Geography: Describe how humans have modified the environment"},{code:"6.1.5.EconNE.1",desc:"Economics: Explain how supply and demand affect prices"},{code:"6.1.5.HistoryCC.3",desc:"History: Sequence key events of colonial America and American Revolution"}],"6-8":[{code:"6.1.8.CivicsPD.1",desc:"Civics: Analyze how democratic ideals are reflected in the Constitution"},{code:"6.1.8.CivicsPI.1",desc:"Civics: Describe how the three branches of government interact"},{code:"6.1.8.GeoPP.2",desc:"Geography: Explain how geography influenced westward expansion"},{code:"6.1.8.EconNE.1",desc:"Economics: Analyze causes and effects of the Industrial Revolution"},{code:"6.1.8.HistoryCC.3",desc:"History: Analyze causes and effects of the Civil War"}],"9-12":[{code:"6.1.12.CivicsPD.4",desc:"Civics: Analyze how Constitutional amendments expanded civil rights"},{code:"6.1.12.EconGE.1",desc:"Economics: Evaluate causes and effects of the Great Depression"},{code:"6.1.12.HistoryCC.7",desc:"History: Analyze US foreign policy during the Cold War"}]},
-  "ELA":{"K-2":[{code:"RL.K.1",desc:"Reading Literature: With prompting, ask/answer questions about key details"},{code:"RL.1.1",desc:"Reading Literature: Ask and answer questions about key details"},{code:"W.1.3",desc:"Writing: Write narratives about two or more events with details"}],"3-5":[{code:"RL.3.3",desc:"Reading Literature: Describe characters and explain how actions contribute to plot"},{code:"RL.5.1",desc:"Reading Literature: Quote accurately when explaining what the text says"},{code:"W.4.1",desc:"Writing: Write opinion pieces supporting a point of view"}],"6-8":[{code:"RL.6.1",desc:"Reading Literature: Cite textual evidence to support analysis"},{code:"RL.8.1",desc:"Reading Literature: Cite evidence that most strongly supports an inference"},{code:"RI.8.1",desc:"Reading Informational Text: Cite textual evidence for analysis"},{code:"SL.8.1",desc:"Speaking/Listening: Engage effectively in collaborative discussions"},{code:"W.7.1",desc:"Writing: Write arguments to support claims with clear reasons"},{code:"W.8.2",desc:"Writing: Write explanatory texts to convey complex ideas"}],"9-12":[{code:"RL.9-10.1",desc:"Reading Literature: Cite strong textual evidence to support analysis"},{code:"W.9-10.1",desc:"Writing: Write arguments that introduce precise claims"},{code:"W.11-12.3",desc:"Writing: Write narratives using pacing, description, reflection"}]},
-  "Science":{"K-2":[{code:"K-PS2-1",desc:"NGSS Forces & Motion: Compare effects of different forces"},{code:"K-ESS2-1",desc:"NGSS Earth Science: Describe weather patterns over time"}],"3-5":[{code:"3-LS1-1",desc:"NGSS Life Science: Describe that organisms have unique life cycles"},{code:"4-PS3-2",desc:"NGSS Energy: Explain that energy can be transferred in various ways"}],"6-8":[{code:"MS-PS1-1",desc:"NGSS Matter: Describe atomic composition of molecules"},{code:"MS-LS1-1",desc:"NGSS Life Science: Provide evidence that living things are made of cells"},{code:"MS-ESS2-1",desc:"NGSS Earth Science: Describe cycling of Earth's materials"}],"9-12":[{code:"HS-PS1-1",desc:"NGSS Chemistry: Use periodic table to predict properties of elements"},{code:"HS-LS1-1",desc:"NGSS Biology: Explain how DNA determines proteins"},{code:"HS-ESS2-2",desc:"NGSS Earth Science: Forecast natural hazards from data"}]},
-  "Math":{"K-2":[{code:"K.CC.A.1",desc:"Counting: Count to 100 by ones and tens"},{code:"1.OA.A.1",desc:"Operations: Use addition and subtraction within 20"}],"3-5":[{code:"3.OA.A.1",desc:"Operations: Interpret products of whole numbers"},{code:"4.NF.A.1",desc:"Fractions: Explain equivalent fractions using models"},{code:"5.NBT.A.1",desc:"Number: Digit in one place is 10 times digit to its right"}],"6-8":[{code:"6.RP.A.1",desc:"Ratios: Understand concept of ratio and use ratio language"},{code:"7.NS.A.1",desc:"Number System: Add and subtract rational numbers"},{code:"8.EE.B.5",desc:"Expressions: Graph proportional relationships, interpreting slope"},{code:"8.G.A.1",desc:"Geometry: Verify properties of rotations, reflections, translations"},{code:"8.F.A.1",desc:"Functions: Understand input-output relationships"}],"9-12":[{code:"HSA.CED.A.1",desc:"Algebra: Create equations and inequalities to solve problems"},{code:"HSF.IF.A.1",desc:"Functions: Understand that a function assigns exactly one output"},{code:"HSS.ID.A.1",desc:"Statistics: Represent data with dot plots, histograms, box plots"}]},
-  "Health":{"K-2":[{code:"2.1.2.A.1",desc:"Personal Health: Identify behaviors that promote health and safety"}],"3-5":[{code:"2.1.5.B.1",desc:"Physical Activity: Explain how physical activity improves health"}],"6-8":[{code:"2.1.8.C.1",desc:"Social/Emotional: Analyze how stress affects physical and mental health"}],"9-12":[{code:"2.1.12.D.1",desc:"Health Decisions: Evaluate how personal choices affect long-term health"}]},
-  "World Languages":{"K-2":[{code:"7.1.NM.IPRET.1",desc:"Interpretive: Recognize familiar words and greetings in the target language"}],"3-5":[{code:"7.1.NM.IPERS.2",desc:"Interpersonal: Exchange basic personal information using memorized phrases"}],"6-8":[{code:"7.1.NM.PRSNT.3",desc:"Presentational: Present simple information using practiced language"},{code:"7.1.NM.IPRET.4",desc:"Interpretive: Identify main idea in short, familiar texts/audio"}],"9-12":[{code:"7.1.NH.IPERS.5",desc:"Interpersonal: Sustain short conversations on familiar topics"},{code:"7.1.NH.PRSNT.2",desc:"Presentational: Create organized oral/written messages for specific audience"}]},
-    "Tech/CS":{"K-2":[{code:"8.1.2.CS.1",desc:"CS: Select and use hardware and software to complete basic tasks"}],"3-5":[{code:"8.1.5.AP.1",desc:"CS: Create programs with sequences, events, and loops"}],"6-8":[{code:"8.1.8.AP.2",desc:"CS: Create clearly named variables to store and use data"}],"9-12":[{code:"8.1.12.DA.1",desc:"Data: Create data visualizations to communicate insights"}]}
-};
-
 function g(id){return document.getElementById(id).value;}
 
 function updateStandards(){
@@ -1571,7 +1560,6 @@ async function call(endpoint,data,outId,btnId,label){
 # ── ROUTES ───────────────────────────────────────────────────
 @app.route('/')
 def index():
-    import json
     return render_template_string(HTML, state_config_json=json.dumps(STATE_CONFIG))
 
 
