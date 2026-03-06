@@ -49,28 +49,125 @@ import json
 
 # ── SHARED STANDARD SETS ────────────────────────────────────
 _CCSS_ELA_STDS = {
-    "K-2": [{"code":"RL.K.1","desc":"Reading Literature: With prompting, ask/answer questions about key details"},{"code":"RL.1.1","desc":"Reading Literature: Ask and answer questions about key details"},{"code":"W.1.3","desc":"Writing: Write narratives about two or more events with details"}],
-    "3-5": [{"code":"RL.3.3","desc":"Reading Literature: Describe characters and explain how actions contribute to plot"},{"code":"RL.5.1","desc":"Reading Literature: Quote accurately when explaining what the text says"},{"code":"W.4.1","desc":"Writing: Write opinion pieces supporting a point of view"}],
-    "6-8": [{"code":"RL.6.1","desc":"Reading Literature: Cite textual evidence to support analysis"},{"code":"RL.8.1","desc":"Reading Literature: Cite evidence that most strongly supports an inference"},{"code":"RI.8.1","desc":"Reading Informational Text: Cite textual evidence for analysis"},{"code":"W.7.1","desc":"Writing: Write arguments to support claims with clear reasons"}],
-    "9-12": [{"code":"RL.9-10.1","desc":"Reading Literature: Cite strong textual evidence to support analysis"},{"code":"W.9-10.1","desc":"Writing: Write arguments that introduce precise claims"},{"code":"W.11-12.3","desc":"Writing: Write narratives using pacing, description, reflection"}],
+    "K-2": [
+        {"code":"RL.K.1","desc":"Reading Literature: With prompting, ask and answer questions about key details"},
+        {"code":"RL.1.2","desc":"Reading Literature: Retell stories including key details and central message"},
+        {"code":"RI.2.1","desc":"Reading Informational: Ask and answer questions about key details in a text"},
+        {"code":"W.1.3","desc":"Writing: Write narratives recounting two or more events in sequence"},
+        {"code":"SL.K.1","desc":"Speaking & Listening: Participate in collaborative conversations with peers"},
+        {"code":"L.2.2","desc":"Language: Demonstrate command of capitalization, punctuation, and spelling"},
+    ],
+    "3-5": [
+        {"code":"RL.3.1","desc":"Reading Literature: Ask and answer questions referring explicitly to the text"},
+        {"code":"RL.4.2","desc":"Reading Literature: Determine a theme from details in the text"},
+        {"code":"RI.5.8","desc":"Reading Informational: Explain how an author uses reasons and evidence"},
+        {"code":"W.4.1","desc":"Writing: Write opinion pieces supporting a point of view with reasons"},
+        {"code":"SL.3.4","desc":"Speaking & Listening: Report on a topic with appropriate facts and details"},
+        {"code":"L.5.4","desc":"Language: Determine meaning of unknown words using context clues"},
+    ],
+    "6-8": [
+        {"code":"RL.6.1","desc":"Reading Literature: Cite textual evidence to support analysis of the text"},
+        {"code":"RL.7.2","desc":"Reading Literature: Determine a theme and analyze its development"},
+        {"code":"RI.8.6","desc":"Reading Informational: Determine author's point of view or purpose"},
+        {"code":"W.7.1","desc":"Writing: Write arguments to support claims with clear reasons and evidence"},
+        {"code":"SL.6.2","desc":"Speaking & Listening: Interpret information presented in diverse media"},
+        {"code":"L.8.1","desc":"Language: Demonstrate command of grammar — verbs, voice, mood"},
+    ],
+    "9-12": [
+        {"code":"RL.9-10.1","desc":"Reading Literature: Cite strong and thorough textual evidence"},
+        {"code":"RL.11-12.2","desc":"Reading Literature: Determine two or more themes and analyze development"},
+        {"code":"RI.11-12.6","desc":"Reading Informational: Determine author's purpose with effective rhetoric"},
+        {"code":"W.9-10.1","desc":"Writing: Write arguments to support claims in analysis of substantive topics"},
+        {"code":"SL.11-12.4","desc":"Speaking & Listening: Present information clearly with logical reasoning"},
+        {"code":"L.9-10.3","desc":"Language: Apply knowledge of language for comprehension and style"},
+    ],
 }
 _CCSS_MATH_STDS = {
-    "K-2": [{"code":"K.CC.A.1","desc":"Counting: Count to 100 by ones and tens"},{"code":"1.OA.A.1","desc":"Operations: Use addition and subtraction within 20"}],
-    "3-5": [{"code":"3.OA.A.1","desc":"Operations: Interpret products of whole numbers"},{"code":"4.NF.A.1","desc":"Fractions: Explain equivalent fractions using models"},{"code":"5.NBT.A.1","desc":"Number: Digit in one place is 10 times digit to its right"}],
-    "6-8": [{"code":"6.RP.A.1","desc":"Ratios: Understand concept of ratio and use ratio language"},{"code":"7.NS.A.1","desc":"Number System: Add and subtract rational numbers"},{"code":"8.EE.B.5","desc":"Expressions: Graph proportional relationships, interpreting slope"},{"code":"8.F.A.1","desc":"Functions: Understand input-output relationships"}],
-    "9-12": [{"code":"HSA.CED.A.1","desc":"Algebra: Create equations and inequalities to solve problems"},{"code":"HSF.IF.A.1","desc":"Functions: Understand that a function assigns exactly one output"},{"code":"HSS.ID.A.1","desc":"Statistics: Represent data with dot plots, histograms, box plots"}],
+    "K-2": [
+        {"code":"K.CC.A.1","desc":"Counting: Count to 100 by ones and tens"},
+        {"code":"1.OA.A.1","desc":"Operations: Use addition and subtraction within 20"},
+        {"code":"2.NBT.B.5","desc":"Number: Fluently add and subtract within 100"},
+        {"code":"K.G.A.1","desc":"Geometry: Describe objects using names of shapes"},
+        {"code":"1.MD.A.1","desc":"Measurement: Order three objects by length"},
+        {"code":"2.OA.C.3","desc":"Operations: Determine odd or even number of objects"},
+    ],
+    "3-5": [
+        {"code":"3.OA.A.1","desc":"Operations: Interpret products of whole numbers"},
+        {"code":"4.NF.A.1","desc":"Fractions: Explain equivalent fractions using models"},
+        {"code":"5.NBT.A.1","desc":"Number: Place value — digit is 10x the digit to its right"},
+        {"code":"3.MD.C.7","desc":"Measurement: Relate area to multiplication and addition"},
+        {"code":"4.G.A.1","desc":"Geometry: Draw and identify lines, angles, and shapes"},
+        {"code":"5.NF.A.1","desc":"Fractions: Add and subtract fractions with unlike denominators"},
+    ],
+    "6-8": [
+        {"code":"6.RP.A.1","desc":"Ratios: Understand concept of ratio and use ratio language"},
+        {"code":"7.NS.A.1","desc":"Number System: Add and subtract rational numbers"},
+        {"code":"8.EE.B.5","desc":"Expressions: Graph proportional relationships and interpret slope"},
+        {"code":"6.G.A.1","desc":"Geometry: Find area of polygons by composing and decomposing"},
+        {"code":"7.SP.A.1","desc":"Statistics: Understand that statistics can answer questions about data"},
+        {"code":"8.F.A.1","desc":"Functions: Understand that a function assigns one output to each input"},
+    ],
+    "9-12": [
+        {"code":"HSA.CED.A.1","desc":"Algebra: Create equations and inequalities to solve problems"},
+        {"code":"HSF.IF.A.1","desc":"Functions: Understand that a function assigns exactly one output"},
+        {"code":"HSS.ID.A.1","desc":"Statistics: Represent data with dot plots, histograms, box plots"},
+        {"code":"HSG.CO.A.1","desc":"Geometry: Know precise definitions of angle, circle, line, parallel"},
+        {"code":"HSN.RN.A.1","desc":"Number: Explain how rational exponents extend integer exponent properties"},
+    ],
 }
 _NGSS_SCI_STDS = {
-    "K-2": [{"code":"K-PS2-1","desc":"NGSS Forces & Motion: Compare effects of different forces"},{"code":"K-ESS2-1","desc":"NGSS Earth Science: Describe weather patterns over time"}],
-    "3-5": [{"code":"3-LS1-1","desc":"NGSS Life Science: Describe that organisms have unique life cycles"},{"code":"4-PS3-2","desc":"NGSS Energy: Explain that energy can be transferred in various ways"}],
-    "6-8": [{"code":"MS-PS1-1","desc":"NGSS Matter: Describe atomic composition of molecules"},{"code":"MS-LS1-1","desc":"NGSS Life Science: Provide evidence that living things are made of cells"}],
-    "9-12": [{"code":"HS-PS1-1","desc":"NGSS Chemistry: Use periodic table to predict properties of elements"},{"code":"HS-LS1-1","desc":"NGSS Biology: Explain how DNA determines proteins"}],
+    "K-2": [
+        {"code":"K-PS2-1","desc":"Physical Science: Plan investigation to compare effects of different forces"},
+        {"code":"K-ESS2-1","desc":"Earth & Space Science: Use a model to represent the relationship between needs of plants and animals"},
+        {"code":"1-LS1-1","desc":"Life Science: Use materials to design a solution to a human problem"},
+        {"code":"2-PS1-1","desc":"Physical Science: Plan an investigation to describe and classify matter by properties"},
+    ],
+    "3-5": [
+        {"code":"3-LS1-1","desc":"Life Science: Develop models to describe organisms' unique life cycles"},
+        {"code":"4-PS4-1","desc":"Physical Science: Develop a model of waves to describe patterns of amplitude and wavelength"},
+        {"code":"5-ESS1-1","desc":"Earth & Space: Support argument that the apparent brightness of the sun and stars is due to relative distances"},
+        {"code":"4-LS1-1","desc":"Life Science: Construct argument that plants and animals have internal and external structures"},
+    ],
+    "6-8": [
+        {"code":"MS-PS1-1","desc":"Physical Science: Develop models to describe atomic composition of simple molecules"},
+        {"code":"MS-LS1-1","desc":"Life Science: Provide evidence that living things are made of cells"},
+        {"code":"MS-ESS1-1","desc":"Earth & Space: Develop and use a model of the Earth-Sun-Moon system"},
+        {"code":"MS-PS2-2","desc":"Physical Science: Plan an investigation to show that the change in motion depends on net force"},
+        {"code":"MS-LS2-1","desc":"Life Science: Analyze and interpret data for patterns of interactions among organisms"},
+    ],
+    "9-12": [
+        {"code":"HS-PS1-1","desc":"Chemistry: Use the periodic table to predict properties of elements"},
+        {"code":"HS-LS1-1","desc":"Biology: Explain how DNA determines the structure of proteins"},
+        {"code":"HS-ESS1-1","desc":"Earth & Space: Develop a model based on evidence to illustrate the life span of the sun"},
+        {"code":"HS-PS2-1","desc":"Physics: Analyze data to support the claim that Newton's second law describes motion"},
+        {"code":"HS-LS4-1","desc":"Biology: Communicate evidence that common ancestry is supported by multiple lines of evidence"},
+    ],
 }
 _GENERIC_SS_STDS = {
-    "K-2": [{"code":"SS.K.1","desc":"Community: Describe family and community roles"},{"code":"SS.2.1","desc":"Geography: Identify continents and major landforms"}],
-    "3-5": [{"code":"SS.3.1","desc":"History: Describe events in local and state history"},{"code":"SS.4.2","desc":"Geography: Explain human-environment interaction"}],
-    "6-8": [{"code":"SS.6.1","desc":"World History: Analyze early civilizations"},{"code":"SS.8.3","desc":"US History: Analyze causes of the American Revolution"}],
-    "9-12": [{"code":"SS.10.2","desc":"Government: Analyze constitutional democracy"},{"code":"SS.11.3","desc":"US History: Evaluate Reconstruction and its effects"}],
+    "K-2": [
+        {"code":"SS.K.1","desc":"Community: Describe family and community roles and responsibilities"},
+        {"code":"SS.1.2","desc":"Geography: Identify maps and globes as representations of Earth's surface"},
+        {"code":"SS.2.1","desc":"Geography: Identify continents, oceans, and major landforms"},
+        {"code":"SS.K.3","desc":"Civics: Explain the purpose of rules and laws in the community"},
+    ],
+    "3-5": [
+        {"code":"SS.3.1","desc":"History: Describe significant events in local and state history"},
+        {"code":"SS.4.2","desc":"Geography: Explain human-environment interaction and migration patterns"},
+        {"code":"SS.5.3","desc":"Civics: Describe the structure of the US government and its branches"},
+        {"code":"SS.4.4","desc":"Economics: Explain the basic concepts of supply, demand, and trade"},
+    ],
+    "6-8": [
+        {"code":"SS.6.1","desc":"World History: Analyze early civilizations and their lasting contributions"},
+        {"code":"SS.7.2","desc":"Geography: Analyze how human activities shape the physical environment"},
+        {"code":"SS.8.3","desc":"US History: Analyze causes and effects of the American Revolution"},
+        {"code":"SS.8.5","desc":"Civics: Evaluate the principles of democracy embedded in the Constitution"},
+    ],
+    "9-12": [
+        {"code":"SS.10.2","desc":"Government: Analyze the principles of constitutional democracy"},
+        {"code":"SS.11.3","desc":"US History: Evaluate Reconstruction and its effects on civil rights"},
+        {"code":"SS.12.1","desc":"Economics: Analyze how market economies allocate resources"},
+        {"code":"SS.10.5","desc":"World History: Evaluate the causes and consequences of global conflicts"},
+    ],
 }
 _CCSS_FALLBACK = (
     "[LESSON] CCSS-aligned lessons require standards-based objectives, formative assessment, and differentiation.\n"
@@ -102,13 +199,13 @@ def _ccss_state(name, standards_name, assessment_name, edu_url, focus_prompt,
 
 # ── STATE DATA ───────────────────────────────────────────────
 STATE_DATA = {
-    "federal": {
-        "name": "Federal (USA)",
-        "standards_name": "Common Core / NGSS / ESSA",
+    "worldwide": {
+        "name": "Worldwide (CCSS/NGSS)",
+        "standards_name": "Common Core (CCSS) / NGSS",
         "assessment_name": "NAEP",
-        "standards_body": "U.S. Department of Education",
+        "standards_body": "International / CCSS / NGSS",
         "edu_url": "https://www.ed.gov/",
-        "focus_prompt": "You are supporting K-12 educators across the United States. Align all content to Common Core State Standards (CCSS), NGSS science standards, ESSA, IDEA, FERPA, and WIDA frameworks. Reference NAEP assessment data and frameworks where relevant. Provide practical, classroom-ready guidance with culturally responsive practices.",
+        "focus_prompt": "You are supporting K-12 educators anywhere in the world. Align all content to Common Core State Standards (CCSS) and NGSS science standards — internationally recognized frameworks used widely across the globe. Reference NAEP assessment data and WIDA frameworks where relevant. Provide practical, classroom-ready guidance with culturally responsive practices.",
         "fallback": "[LESSON] Common Core-aligned lessons require standards-based objectives, formative assessment, and differentiation.\n[ELA] CCSS ELA standards emphasize text complexity, evidence-based writing, and academic vocabulary.\n[MATH] CCSS Math standards focus on conceptual understanding, procedural fluency, and application.\n[SCIENCE] NGSS science standards emphasize three-dimensional learning: practices, crosscutting concepts, and disciplinary core ideas.\n[POLICY] ESSA requires states to set academic standards and measure student performance on state assessments.",
         "ela_standards": _CCSS_ELA_STDS,
         "math_standards": _CCSS_MATH_STDS,
@@ -611,22 +708,58 @@ def _build_state_config():
                 "Math": s["math_standards"],
                 "Science": s["science_standards"],
                 "Health": {
-                    "K-2": [{"code":"HE.K.1","desc":"Personal Health: Identify behaviors that promote health and safety"}],
-                    "3-5": [{"code":"HE.3.1","desc":"Physical Activity: Explain how physical activity improves health"}],
-                    "6-8": [{"code":"HE.6.1","desc":"Social/Emotional: Analyze how stress affects physical and mental health"}],
-                    "9-12": [{"code":"HE.9.1","desc":"Health Decisions: Evaluate how personal choices affect long-term health"}],
+                    "K-2": [
+                        {"code":"HE.K.1","desc":"Personal Health: Identify behaviors that promote health and safety"},
+                        {"code":"HE.1.2","desc":"Nutrition: Name food groups and their benefits for the body"},
+                    ],
+                    "3-5": [
+                        {"code":"HE.3.1","desc":"Physical Activity: Explain how physical activity improves health"},
+                        {"code":"HE.4.2","desc":"Safety: Describe strategies to prevent injuries and stay safe"},
+                    ],
+                    "6-8": [
+                        {"code":"HE.6.1","desc":"Social/Emotional: Analyze how stress affects physical and mental health"},
+                        {"code":"HE.7.3","desc":"Substance Prevention: Evaluate effects of alcohol, tobacco, and drugs on the body"},
+                    ],
+                    "9-12": [
+                        {"code":"HE.9.1","desc":"Health Decisions: Evaluate how personal choices affect long-term health"},
+                        {"code":"HE.10.2","desc":"Community Health: Analyze how public health policies affect individual wellness"},
+                    ],
                 },
                 "World Languages": {
-                    "K-2": [{"code":"WL.K.1","desc":"Interpretive: Recognize familiar words and greetings in the target language"}],
-                    "3-5": [{"code":"WL.3.1","desc":"Interpersonal: Exchange basic personal information using memorized phrases"}],
-                    "6-8": [{"code":"WL.6.1","desc":"Presentational: Present simple information using practiced language"}],
-                    "9-12": [{"code":"WL.9.1","desc":"Interpersonal: Sustain short conversations on familiar topics"}],
+                    "K-2": [
+                        {"code":"WL.K.1","desc":"Interpretive: Recognize familiar words and greetings in the target language"},
+                        {"code":"WL.1.2","desc":"Cultural: Identify cultural practices and products from target language communities"},
+                    ],
+                    "3-5": [
+                        {"code":"WL.3.1","desc":"Interpersonal: Exchange basic personal information using memorized phrases"},
+                        {"code":"WL.4.2","desc":"Presentational: Present simple information about self and surroundings"},
+                    ],
+                    "6-8": [
+                        {"code":"WL.6.1","desc":"Presentational: Present rehearsed information on familiar topics"},
+                        {"code":"WL.7.2","desc":"Interpersonal: Participate in short conversations on familiar topics"},
+                    ],
+                    "9-12": [
+                        {"code":"WL.9.1","desc":"Interpersonal: Sustain conversations on familiar and researched topics"},
+                        {"code":"WL.10.2","desc":"Interpretive: Interpret main ideas and supporting details in authentic texts"},
+                    ],
                 },
                 "Tech/CS": {
-                    "K-2": [{"code":"CS.K.1","desc":"CS: Select and use hardware and software to complete basic tasks"}],
-                    "3-5": [{"code":"CS.3.1","desc":"CS: Create programs with sequences, events, and loops"}],
-                    "6-8": [{"code":"CS.6.1","desc":"CS: Create clearly named variables to store and use data"}],
-                    "9-12": [{"code":"CS.9.1","desc":"Data: Create data visualizations to communicate insights"}],
+                    "K-2": [
+                        {"code":"CS.K.1","desc":"Computing Systems: Select and use hardware and software for tasks"},
+                        {"code":"CS.1.2","desc":"Algorithms: Create a sequence of steps to solve a simple problem"},
+                    ],
+                    "3-5": [
+                        {"code":"CS.3.1","desc":"Algorithms: Create programs with sequences, events, and loops"},
+                        {"code":"CS.4.2","desc":"Data: Organize and present data in visual formats"},
+                    ],
+                    "6-8": [
+                        {"code":"CS.6.1","desc":"Programming: Create clearly named variables to store and manipulate data"},
+                        {"code":"CS.7.2","desc":"Cybersecurity: Explain how encryption protects information"},
+                    ],
+                    "9-12": [
+                        {"code":"CS.9.1","desc":"Data Analysis: Create data visualizations to communicate insights"},
+                        {"code":"CS.10.2","desc":"Impact: Evaluate the social and ethical implications of computing"},
+                    ],
                 },
             },
         }
@@ -674,18 +807,18 @@ def _bg_refresh():
 
 threading.Thread(target=_bg_refresh, daemon=True).start()
 
-def get_context(state="federal"):
+def get_context(state="worldwide"):
     with _blog_lock:
         content = _cache["content"] if _cache["content"] else ""
-    state_data = STATE_DATA.get(state, STATE_DATA["federal"])
+    state_data = STATE_DATA.get(state, STATE_DATA["worldwide"])
     state_fallback = state_data["fallback"]
     if content:
         return content + "\n\nSTATE CONTEXT:\n" + state_fallback
     return state_fallback
 
 # ── LLM ─────────────────────────────────────────────────────
-def _focus_prompt(state="federal"):
-    state_data = STATE_DATA.get(state, STATE_DATA["federal"])
+def _focus_prompt(state="worldwide"):
+    state_data = STATE_DATA.get(state, STATE_DATA["worldwide"])
     return state_data["focus_prompt"]
 
 
@@ -911,7 +1044,7 @@ def _cache_set(key, val):
             _resp_cache.popitem(last=False)
 
 
-def llm(system, user, state="federal"):
+def llm(system, user, state="worldwide"):
     focus_prompt = _focus_prompt(state)
     full_system = (
     system
@@ -1038,9 +1171,9 @@ select optgroup{font-weight:bold;color:var(--gd)}
 </div>
 
 <div class="state-selector-bar">
-  <label for="stateSelect">&#x1F5FA;&#xFE0F; Select Your State:</label>
+  <label for="stateSelect">&#x1F5FA;&#xFE0F; Select Your Region:</label>
   <select id="stateSelect" onchange="onStateChange()">
-    <option value="federal">&#x1F1FA;&#x1F1F8; Federal (USA)</option>
+    <option value="worldwide">&#x1F30D; Worldwide (CCSS/NGSS)</option>
     <option value="AL">Alabama</option>
     <option value="AK">Alaska</option>
     <option value="AZ">Arizona</option>
@@ -1092,7 +1225,7 @@ select optgroup{font-weight:bold;color:var(--gd)}
     <option value="WI">Wisconsin</option>
     <option value="WY">Wyoming</option>
   </select>
-  <span id="state-banner" class="state-banner">&#x1F1FA;&#x1F1F8; Federal (USA) Standards</span>
+  <span id="state-banner" class="state-banner">&#x1F30D; Worldwide (CCSS/NGSS) Standards</span>
 </div>
 
 <div class="container">
@@ -1137,7 +1270,7 @@ select optgroup{font-weight:bold;color:var(--gd)}
       </div>
     </div>
     <div class="field">
-      <label>Standard <span class="tip" data-tip="Select grade and subject first">?</span></label>
+      <label>Standard <span class="tip" data-tip="Optional — AI will auto-select if blank">?</span></label>
       <select id="l1" onchange="showStdDesc()">
         <option value="">-- Select grade & subject above first --</option>
       </select>
@@ -1265,7 +1398,7 @@ select optgroup{font-weight:bold;color:var(--gd)}
       </div>
       <div class="field">
         <label>Subject</label>
-        <select id="n2"><option selected>ELA</option><option>Math</option><option>Science (NGSS)</option></select>
+        <select id="n2"><option selected>ELA</option><option>Math</option><option id="assess-science-option">Science (NGSS)</option></select>
       </div>
     </div>
     <div class="form-row two">
@@ -1311,7 +1444,7 @@ select optgroup{font-weight:bold;color:var(--gd)}
     <hr>
     <div class="form-row two">
       <div class="field"><label>Unit Topic</label><input id="u1" placeholder="e.g. American Revolution, Fractions, Ecosystems"></div>
-      <div class="field"><label>Standard</label><input id="u2" placeholder="e.g. 6.1.8.HistoryCC.3 or local standard"></div>
+      <div class="field"><label>Standard <span class="tip" data-tip="Optional — AI will auto-select if blank">?</span></label><input id="u2" placeholder="e.g. 6.1.8.HistoryCC.3 or local standard"></div>
     </div>
     <div class="form-row two">
       <div class="field">
@@ -1426,8 +1559,8 @@ select optgroup{font-weight:bold;color:var(--gd)}
 <script>
 const STATE_CONFIG = {{ state_config_json | safe }};
 
-let currentState = 'federal';
-let STANDARDS = STATE_CONFIG['federal'].standards;
+let currentState = 'worldwide';
+let STANDARDS = STATE_CONFIG['worldwide'].standards;
 
 function g(id){return document.getElementById(id).value;}
 
@@ -1437,7 +1570,7 @@ function updateStandards(){
   const stds=STATE_CONFIG[currentState]?STATE_CONFIG[currentState].standards:STANDARDS;
   const list=(stds[subject]||{})[grade]||[];
   if(!list.length){sel.innerHTML='<option value="">-- No standards available --</option>';return;}
-  list.forEach((s,i)=>{const o=document.createElement('option');o.value=s.code;o.textContent=s.code;if(i===0)o.selected=true;sel.appendChild(o);});
+  list.forEach((s,i)=>{const o=document.createElement('option');o.value=s.code;o.textContent=s.code+' \u2014 '+s.desc;if(i===0)o.selected=true;sel.appendChild(o);});
   showStdDesc();
 }
 
@@ -1452,8 +1585,8 @@ function showStdDesc(){
 
 function onStateChange(){
   const sel=document.getElementById('stateSelect');
-  currentState=sel.value||'federal';
-  const cfg=STATE_CONFIG[currentState]||STATE_CONFIG['federal'];
+  currentState=sel.value||'worldwide';
+  const cfg=STATE_CONFIG[currentState]||STATE_CONFIG['worldwide'];
   STANDARDS=cfg.standards;
   document.getElementById('state-banner').textContent=cfg.name+' Standards';
   const assessBtn=document.querySelector('[data-tab="assessment_prep"]');
@@ -1466,8 +1599,10 @@ function onStateChange(){
   if(assessStdLabel)assessStdLabel.innerHTML=cfg.standard_label+' <span class="tip" data-tip="Leave blank for auto-select">?</span>';
   const n3=document.getElementById('n3');
   if(n3)n3.placeholder=cfg.standard_placeholder;
-  const sciOption=document.getElementById('science-option');
-  if(sciOption)sciOption.textContent=cfg.science_label;
+  const assessSciOption=document.getElementById('assess-science-option');
+  if(assessSciOption)assessSciOption.textContent=cfg.science_label;
+  const u2=document.getElementById('u2');
+  if(u2)u2.placeholder=cfg.standard_placeholder;
   updateStandards();
 }
 
@@ -1536,7 +1671,7 @@ async function call(endpoint,data,outId,btnId,label){
   btn.innerHTML='<span class="spinner"></span>Generating...';
   out.textContent='⏳ AI is thinking...';
   try{
-    const state=currentState||'federal';
+    const state=currentState||'worldwide';
     const payload={...data,focus:focusMode,state:state};
     const r=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
     if(!r.ok){
@@ -1570,13 +1705,15 @@ def health():
 @app.route('/lesson', methods=['POST'])
 def do_lesson():
     try:
-        d, err, code = _get_json(["standard", "grade", "subject", "duration"])
+        d, err, code = _get_json(["grade", "subject", "duration"])
         if err:
             return err, code
+        standard = d.get('standard', '').strip()
+        std = standard if standard else "appropriate grade-level standard"
         return jsonify(result=llm(
             f"Expert {d['grade']} {d['subject']} teacher.",
-            f"Create a {d['duration']} lesson for standard/topic: {d['standard']}.\n\n🎣 HOOK\n📚 MAIN ACTIVITY (ELL/IEP notes)\n🔍 ORIGINALITY CHECK\n🎯 EXIT TICKET",
-            d.get('state', 'federal'),
+            f"Create a {d['duration']} lesson for standard/topic: {std}.\n\n🎣 HOOK\n📚 MAIN ACTIVITY (ELL/IEP notes)\n🔍 ORIGINALITY CHECK\n🎯 EXIT TICKET",
+            d.get('state', 'worldwide'),
         ))
     except Exception:
         return _internal_error()
@@ -1591,7 +1728,7 @@ def do_feedback():
         return jsonify(result=llm(
             f"Encouraging {d['grade']} teacher. NEVER rewrite student work.",
             f"Rubric: {d['rubric']}\n\nStudent work:\n{d['work']}\n\n💪 STRENGTH\n📖 EVIDENCE\n🧠 REASONING\n🎯 NEXT STEP\n⚠️ ACADEMIC INTEGRITY NOTE",
-            d.get('state', 'federal'),
+            d.get('state', 'worldwide'),
         ))
     except Exception:
         return _internal_error()
@@ -1606,7 +1743,7 @@ def do_diff():
         return jsonify(result=llm(
             "SPED and ELL expert teacher.",
             f"Adapt this lesson for: {d['needs']}\n\n{d['lesson']}\n\n📝 SIMPLIFIED VERSION\n🖼️ VISUAL AIDS\n🪜 SCAFFOLDS\n📊 MODIFIED ASSESSMENT\n⏱️ EXTENDED TIME NOTES",
-            d.get('state', 'federal'),
+            d.get('state', 'worldwide'),
         ))
     except Exception:
         return _internal_error()
@@ -1621,7 +1758,7 @@ def do_policy():
         return jsonify(result=llm(
             "School administrator and education policy expert.",
             f"Write official AI use policy for {d['school']} | Year: {d['year']} | Grade: {d['grade']} | Concerns: {d['concerns']}\n\n📌 PURPOSE\n📋 SCOPE\n👨‍🎓 STUDENT GUIDELINES\n👩‍🏫 TEACHER RESPONSIBILITIES\n👨‍👩‍👧 PARENT COMMUNICATION\n⚠️ CONSEQUENCES\n📅 REVIEW DATE",
-            d.get('state', 'federal'),
+            d.get('state', 'worldwide'),
         ))
     except Exception:
         return _internal_error()
@@ -1636,7 +1773,7 @@ def do_email():
         return jsonify(result=llm(
             "Professional educator communication expert.",
             f"Write a {d['tone']} email to {d['recipient']} about: {d['topic']}.\nInclude: Subject line, greeting, 2-3 paragraphs, professional closing. Under 200 words.",
-            d.get('state', 'federal'),
+            d.get('state', 'worldwide'),
         ))
     except Exception:
         return _internal_error()
@@ -1651,7 +1788,7 @@ def do_integrity():
         return jsonify(result=llm(
             "Educator and academic integrity specialist.",
             f"Grade: {d['grade']} | Assignment: {d['type']}\n\nStudent work:\n{d['work']}\n\n🔍 AI-RISK ASSESSMENT (High/Medium/Low) with reasons\n📝 SUSPICIOUS PHRASES\n✅ LIKELY ORIGINAL ELEMENTS\n💬 CONVERSATION SCRIPT for teacher\n📋 NEXT STEPS\n⚠️ NOTE: Advisory only — not proof of AI use.",
-            d.get('state', 'federal'),
+            d.get('state', 'worldwide'),
         ))
     except Exception:
         return _internal_error()
@@ -1663,8 +1800,8 @@ def do_assessment_prep():
         d, err, code = _get_json(["grade", "subject", "qtype", "num"])
         if err:
             return err, code
-        state = d.get('state', 'federal')
-        state_data = STATE_DATA.get(state, STATE_DATA['federal'])
+        state = d.get('state', 'worldwide')
+        state_data = STATE_DATA.get(state, STATE_DATA['worldwide'])
         standard = d.get('standard', '').strip()
         std = standard if standard else "appropriate grade-level standard"
         assessment_name = state_data['assessment_name']
@@ -1686,7 +1823,7 @@ def do_parent():
         return jsonify(result=llm(
             f"Professional educator writing parent communications in {d['lang']}. Culturally responsive tone.",
             f"Write a {d['type']} parent letter in {d['lang']}.\nDetails: {d['details']}\nFrom: {d['teacher']}\nInclude: Date, greeting, clear explanation, action needed, contact info, closing. Under 250 words. Write ONLY in {d['lang']}.",
-            d.get('state', 'federal'),
+            d.get('state', 'worldwide'),
         ))
     except Exception:
         return _internal_error()
@@ -1695,13 +1832,15 @@ def do_parent():
 @app.route('/unit_plan', methods=['POST'])
 def do_unit():
     try:
-        d, err, code = _get_json(["topic", "standard", "grade", "subject", "duration"])
+        d, err, code = _get_json(["topic", "grade", "subject", "duration"])
         if err:
             return err, code
+        standard = d.get('standard', '').strip()
+        std = standard if standard else "appropriate grade-level standard"
         return jsonify(result=llm(
             f"Expert {d['grade']} {d['subject']} curriculum designer.",
-            f"Create a 2-week unit plan for: {d['topic']}\nStandard: {d['standard']} | Grade: {d['grade']} | Subject: {d['subject']} | Duration: {d['duration']}\n\n📌 UNIT OVERVIEW\n📅 WEEK 1 (Day 1–5)\n📅 WEEK 2 (Day 6–10)\n📊 ASSESSMENTS\n♿ DIFFERENTIATION\n📚 RESOURCES",
-            d.get('state', 'federal'),
+            f"Create a 2-week unit plan for: {d['topic']}\nStandard: {std} | Grade: {d['grade']} | Subject: {d['subject']} | Duration: {d['duration']}\n\n📌 UNIT OVERVIEW\n📅 WEEK 1 (Day 1–5)\n📅 WEEK 2 (Day 6–10)\n📊 ASSESSMENTS\n♿ DIFFERENTIATION\n📚 RESOURCES",
+            d.get('state', 'worldwide'),
         ))
     except Exception:
         return _internal_error()
@@ -1716,7 +1855,7 @@ def do_iep504():
         return jsonify(result=llm(
             "Special education expert. Knowledge of IDEA and Section 504.",
             f"Request: {d['plan']} | Grade: {d['grade']} | Need: {d['disability']} | Context: {d['context']}\n\n📋 PLAIN LANGUAGE EXPLANATION\n⚖️ LEGAL BASIS\n✅ SPECIFIC ACCOMMODATIONS (at least 8)\n🎯 CLASSROOM STRATEGIES\n👨‍👩‍👧 PARENT COMMUNICATION TIPS\n⚠️ Always consult your Child Study Team for official plans.",
-            d.get('state', 'federal'),
+            d.get('state', 'worldwide'),
         ))
     except Exception:
         return _internal_error()
@@ -1731,7 +1870,7 @@ def do_quiz():
         return jsonify(result=llm(
             "K-12 assessment specialist.",
             f"Create a {d['qtype']} quiz with {d['num']} questions for grade {d['grade']} on topic: {d['topic']}. Include answer key and short rationale.",
-            d.get('state', 'federal'),
+            d.get('state', 'worldwide'),
         ))
     except Exception:
         return _internal_error()
@@ -1746,7 +1885,7 @@ def do_rubric():
         return jsonify(result=llm(
             "K-12 instructional coach and rubric designer.",
             f"Build a {d['scale']} rubric for grade {d['grade']} assignment: {d['assignment']}. Include {d['criteria']} criteria with clear performance descriptors.",
-            d.get('state', 'federal'),
+            d.get('state', 'worldwide'),
         ))
     except Exception:
         return _internal_error()
@@ -1761,7 +1900,7 @@ def do_refine_response():
         return jsonify(result=llm(
             "Instructional writing coach for teachers.",
             f"Revise the following AI response based on teacher request.\n\nORIGINAL RESPONSE:\n{d['response']}\n\nTEACHER REQUEST:\n{d['request']}\n\nReturn improved version plus a brief list of what changed.",
-            d.get('state', 'federal'),
+            d.get('state', 'worldwide'),
         ))
     except Exception:
         return _internal_error()
