@@ -1271,8 +1271,8 @@ select optgroup{font-weight:bold;color:var(--gd)}
     </div>
     <div class="field">
       <label>Standard <span class="tip" data-tip="Optional — AI will auto-select if blank">?</span></label>
-      <select id="l1" onchange="showStdDesc()">
-        <option value="">-- Select grade & subject above first --</option>
+      <select id="l1" onchange="showStdDesc()" disabled>
+        <option value="">-- Select a region above first --</option>
       </select>
       <div id="std-desc" class="std-desc"></div>
     </div>
@@ -1561,16 +1561,19 @@ const STATE_CONFIG = {{ state_config_json | safe }};
 
 let currentState = 'worldwide';
 let STANDARDS = STATE_CONFIG['worldwide'].standards;
+let regionSelected = false;
 
 function g(id){return document.getElementById(id).value;}
 
 function updateStandards(){
   const grade=g('l2'),subject=g('l3'),sel=document.getElementById('l1'),desc=document.getElementById('std-desc');
-  sel.innerHTML='';desc.className='std-desc';desc.textContent='';
+  desc.className='std-desc';desc.textContent='';
+  if(!regionSelected){sel.disabled=true;return;}
+  sel.disabled=false;sel.innerHTML='';
   const stds=STATE_CONFIG[currentState]?STATE_CONFIG[currentState].standards:STANDARDS;
   const list=(stds[subject]||{})[grade]||[];
   if(!list.length){sel.innerHTML='<option value="">-- No standards available --</option>';return;}
-  list.forEach((s,i)=>{const o=document.createElement('option');o.value=s.code;o.textContent=s.code+' \u2014 '+s.desc;if(i===0)o.selected=true;sel.appendChild(o);});
+  list.forEach((s)=>{const o=document.createElement('option');o.value=s.code;o.textContent=s.code;sel.appendChild(o);});
   showStdDesc();
 }
 
@@ -1586,6 +1589,7 @@ function showStdDesc(){
 function onStateChange(){
   const sel=document.getElementById('stateSelect');
   currentState=sel.value||'worldwide';
+  regionSelected=true;
   const cfg=STATE_CONFIG[currentState]||STATE_CONFIG['worldwide'];
   STANDARDS=cfg.standards;
   document.getElementById('state-banner').textContent=cfg.name+' Standards';
@@ -1606,7 +1610,7 @@ function onStateChange(){
   updateStandards();
 }
 
-window.onload=()=>{updateStandards();onStateChange();};
+window.onload=()=>{updateStandards();};
 
 function show(tab,btn){
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
