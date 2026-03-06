@@ -1103,20 +1103,16 @@ def _internal_error():
 HTML = """<!DOCTYPE html>
 <html lang="en">
 <head>
-<title>EduSafeAI Hub</title>
+<title>EduSafe AI – Safe AI Platform for Educators</title>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="AI-powered tools for K-12 educators across the United States.">
+<meta name="description" content="EduSafe AI helps schools and educators responsibly integrate artificial intelligence into teaching, lesson planning, student feedback, and AI policy development.">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8F%AB%3C/text%3E%3C/svg%3E">
+<script src="https://cdn.tailwindcss.com"></script>
 <style>
+html{scroll-behavior:smooth}
 :root{--gd:#1a472a;--gm:#2d6a4f;--gl:#52b788;--gp:#f0f7f0;--gb:#c8e6c9;--w:#fff;--gray:#666;--r:12px}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Segoe UI',Arial,sans-serif;background:var(--gp);color:#222}
-.header{background:linear-gradient(135deg,var(--gd),var(--gl));color:#fff;padding:32px 20px;text-align:center}
-.header h1{font-size:2.2em;margin-bottom:8px;letter-spacing:1px}
-.header p{font-size:1em;opacity:.92;max-width:580px;margin:0 auto}
-.badges{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:14px}
-.badge{background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);border-radius:20px;padding:5px 14px;font-size:.82em}
-.container{max-width:920px;margin:28px auto;padding:0 16px}
 .tabs{display:grid;grid-template-columns:repeat(auto-fit,minmax(80px,1fr));gap:8px;margin-bottom:24px}
 .tabs button{background:var(--gm);color:#fff;border:none;padding:10px 4px;border-radius:var(--r);cursor:pointer;font-size:11px;font-weight:600;transition:all .2s;display:flex;flex-direction:column;align-items:center;gap:3px;width:100%}
 .tabs button:hover{background:var(--gd);transform:translateY(-2px)}
@@ -1149,7 +1145,6 @@ textarea{resize:vertical;min-height:100px}
 .spinner{display:inline-block;width:16px;height:16px;border:3px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .8s linear infinite;vertical-align:middle;margin-right:6px}
 @keyframes spin{to{transform:rotate(360deg)}}
 hr{border:none;border-top:1px solid #e0e0e0;margin:18px 0}
-.footer{text-align:center;padding:28px 16px;color:var(--gray);font-size:13px;line-height:2;background:var(--w);border-radius:16px;margin-top:20px}
 select optgroup{font-weight:bold;color:var(--gd)}
 .char-counter{font-size:.78em;color:var(--gray);text-align:right;margin-top:2px}
 .state-selector-bar{background:linear-gradient(135deg,#1b4332,#2d6a4f);padding:12px 20px;display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;border-bottom:3px solid #52b788}
@@ -1158,403 +1153,667 @@ select optgroup{font-weight:bold;color:var(--gd)}
 .state-banner{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.4);border-radius:20px;padding:5px 16px;font-size:.85em;font-weight:600}
 </style>
 </head>
-<body>
-<div class="header">
-  <a href="/" style="color:inherit;text-decoration:none"><h1>🛡️ EduSafeAI Hub</h1></a>
-  <p><b>AI tools for K-12 educators worldwide</b></p>
-  <div class="badges">
-    <span class="badge">🏫 Education-Ready</span>
-    <span class="badge">♿ IEP & ELL Ready</span>
-    <span class="badge">🔒 No Student Data Stored</span>
-    <span class="badge">☁️ Multi-AI Powered</span>
+<body class="font-sans text-gray-800 bg-white">
+
+<!-- ── NAVBAR ── -->
+<nav class="sticky top-0 z-50 bg-white shadow-sm border-b border-gray-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <a href="/" class="flex items-center gap-2 text-xl font-bold text-green-800 hover:text-green-600 transition-colors">
+        <span class="text-2xl">🛡️</span>
+        <span>EduSafe AI</span>
+      </a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#problem" class="text-sm font-medium text-gray-600 hover:text-green-700 transition-colors">Problem</a>
+        <a href="#features" class="text-sm font-medium text-gray-600 hover:text-green-700 transition-colors">Features</a>
+        <a href="#mission" class="text-sm font-medium text-gray-600 hover:text-green-700 transition-colors">Mission</a>
+        <a href="#about" class="text-sm font-medium text-gray-600 hover:text-green-700 transition-colors">About</a>
+        <a href="#platform" class="inline-flex items-center gap-1 bg-green-700 hover:bg-green-800 text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors shadow-sm">
+          🚀 Launch App
+        </a>
+      </div>
+      <!-- Mobile menu button -->
+      <a href="#platform" class="md:hidden inline-flex items-center gap-1 bg-green-700 text-white text-sm font-semibold px-4 py-2 rounded-full">
+        🚀 App
+      </a>
+    </div>
   </div>
-</div>
+</nav>
 
-<div class="state-selector-bar">
-  <label for="stateSelect">&#x1F5FA;&#xFE0F; Select Your Region:</label>
-  <select id="stateSelect" onchange="onStateChange()">
-    <option value="worldwide">&#x1F30D; Worldwide (CCSS/NGSS)</option>
-    <option value="AL">Alabama</option>
-    <option value="AK">Alaska</option>
-    <option value="AZ">Arizona</option>
-    <option value="AR">Arkansas</option>
-    <option value="CA">California</option>
-    <option value="CO">Colorado</option>
-    <option value="CT">Connecticut</option>
-    <option value="DE">Delaware</option>
-    <option value="FL">Florida</option>
-    <option value="GA">Georgia</option>
-    <option value="HI">Hawaii</option>
-    <option value="ID">Idaho</option>
-    <option value="IL">Illinois</option>
-    <option value="IN">Indiana</option>
-    <option value="IA">Iowa</option>
-    <option value="KS">Kansas</option>
-    <option value="KY">Kentucky</option>
-    <option value="LA">Louisiana</option>
-    <option value="ME">Maine</option>
-    <option value="MD">Maryland</option>
-    <option value="MA">Massachusetts</option>
-    <option value="MI">Michigan</option>
-    <option value="MN">Minnesota</option>
-    <option value="MS">Mississippi</option>
-    <option value="MO">Missouri</option>
-    <option value="MT">Montana</option>
-    <option value="NE">Nebraska</option>
-    <option value="NV">Nevada</option>
-    <option value="NH">New Hampshire</option>
-    <option value="NJ">New Jersey</option>
-    <option value="NM">New Mexico</option>
-    <option value="NY">New York</option>
-    <option value="NC">North Carolina</option>
-    <option value="ND">North Dakota</option>
-    <option value="OH">Ohio</option>
-    <option value="OK">Oklahoma</option>
-    <option value="OR">Oregon</option>
-    <option value="PA">Pennsylvania</option>
-    <option value="RI">Rhode Island</option>
-    <option value="SC">South Carolina</option>
-    <option value="SD">South Dakota</option>
-    <option value="TN">Tennessee</option>
-    <option value="TX">Texas</option>
-    <option value="UT">Utah</option>
-    <option value="VT">Vermont</option>
-    <option value="VA">Virginia</option>
-    <option value="WA">Washington</option>
-    <option value="WV">West Virginia</option>
-    <option value="WI">Wisconsin</option>
-    <option value="WY">Wyoming</option>
-  </select>
-  <span id="state-banner" class="state-banner">&#x1F30D; Worldwide (CCSS/NGSS) Standards</span>
-</div>
-
-<div class="container">
-  <div class="tabs" id="tool-tabs" role="tablist" aria-label="Tool categories">
-    <button class="active" role="tab" aria-selected="true" aria-controls="lesson" data-tab="lesson"><span class="tab-icon">📖</span>Lesson</button>
-    <button role="tab" aria-selected="false" aria-controls="feedback" data-tab="feedback"><span class="tab-icon">💬</span>Feedback</button>
-    <button role="tab" aria-selected="false" aria-controls="diff" data-tab="diff"><span class="tab-icon">♿</span>IEP/ELL</button>
-    <button role="tab" aria-selected="false" aria-controls="policy" data-tab="policy"><span class="tab-icon">📄</span>Policy</button>
-    <button role="tab" aria-selected="false" aria-controls="email" data-tab="email"><span class="tab-icon">✉️</span>Email</button>
-    <button role="tab" aria-selected="false" aria-controls="integrity" data-tab="integrity"><span class="tab-icon">🧪</span>AI Integrity</button>
-    <button role="tab" aria-selected="false" aria-controls="assessment_prep" data-tab="assessment_prep"><span class="tab-icon">📊</span>Assessment Prep</button>
-    <button role="tab" aria-selected="false" aria-controls="parent" data-tab="parent"><span class="tab-icon">🗣️</span>Parent Letter</button>
-    <button role="tab" aria-selected="false" aria-controls="unit" data-tab="unit"><span class="tab-icon">📅</span>Unit Plan</button>
-    <button role="tab" aria-selected="false" aria-controls="iep504" data-tab="iep504"><span class="tab-icon">🏫</span>504/IEP</button>
-    <button role="tab" aria-selected="false" aria-controls="quiz" data-tab="quiz"><span class="tab-icon">❓</span>Quiz</button>
-    <button role="tab" aria-selected="false" aria-controls="rubric" data-tab="rubric"><span class="tab-icon">🧾</span>Rubric</button>
-    <button role="tab" aria-selected="false" aria-controls="refine" data-tab="refine"><span class="tab-icon">🔧</span>Improve</button>
-    <button role="tab" aria-selected="false" aria-controls="sitefb" data-tab="sitefb"><span class="tab-icon">⭐</span>Contact Us</button>
+<!-- ── HERO ── -->
+<section class="relative overflow-hidden bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700 text-white">
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute inset-0" style="background-image:radial-gradient(circle at 25% 25%,white 1px,transparent 1px),radial-gradient(circle at 75% 75%,white 1px,transparent 1px);background-size:50px 50px"></div>
   </div>
+  <div class="relative max-w-4xl mx-auto px-4 py-24 sm:py-32 text-center">
+    <div class="inline-flex items-center gap-2 bg-white/15 border border-white/30 rounded-full px-4 py-1.5 text-sm font-medium mb-8">
+      <span>🔒</span><span>No Student Data Stored · FERPA-Aware Design</span>
+    </div>
+    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
+      AI That Puts <span class="text-yellow-300">Student Safety</span><br>First
+    </h1>
+    <p class="text-lg sm:text-xl text-blue-100 max-w-2xl mx-auto mb-10">
+      EduSafe AI gives K-12 educators powerful AI tools — lesson planning, feedback, policy writing, and more — built with privacy, academic integrity, and responsible use at the core.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="#platform" class="inline-flex items-center justify-center gap-2 bg-white text-indigo-700 font-bold px-8 py-4 rounded-full text-base shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all">
+        🚀 Launch Free Tools
+      </a>
+      <a href="#features" class="inline-flex items-center justify-center gap-2 bg-white/15 border border-white/40 text-white font-semibold px-8 py-4 rounded-full text-base hover:bg-white/25 transition-all">
+        📖 See What's Inside
+      </a>
+    </div>
+    <div class="flex flex-wrap justify-center gap-6 mt-12 text-sm text-blue-100">
+      <span class="flex items-center gap-1.5">✅ 14 AI-powered tools</span>
+      <span class="flex items-center gap-1.5">✅ All 50 states + worldwide standards</span>
+      <span class="flex items-center gap-1.5">✅ IEP &amp; ELL ready</span>
+      <span class="flex items-center gap-1.5">✅ Free to use</span>
+    </div>
+  </div>
+</section>
 
-  <!-- 1. LESSON -->
-  <div id="lesson" class="tab active"><div class="card">
-    <h2>📖 AI Lesson Designer</h2>
-    <p class="hint">Generate a complete standards-aligned lesson plan with hooks, activities, and exit tickets.</p>
-    <hr>
-    <div class="form-row two">
-      <div class="field">
-        <label>Grade</label>
-        <select id="l2" onchange="updateStandards()">
-          <option value="K-2">K-2</option><option value="3-5">3-5</option>
-          <option value="6-8" selected>6-8</option><option value="9-12">9-12</option>
+<!-- ── PROBLEM ── -->
+<section id="problem" class="py-20 bg-gray-50">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="text-center mb-14">
+      <p class="text-sm font-semibold text-indigo-600 uppercase tracking-wider mb-2">The Challenge</p>
+      <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Schools Are Navigating AI Without a Map</h2>
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto">Educators face real risks as AI tools flood classrooms — without safe, purpose-built solutions.</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="bg-white rounded-2xl p-8 shadow-sm border border-red-100 text-center">
+        <div class="text-4xl mb-4">🔒</div>
+        <h3 class="text-xl font-bold text-gray-900 mb-3">Student Data Privacy</h3>
+        <p class="text-gray-600">Generic AI tools harvest student data with no FERPA safeguards. Schools need tools that never store student PII.</p>
+      </div>
+      <div class="bg-white rounded-2xl p-8 shadow-sm border border-yellow-100 text-center">
+        <div class="text-4xl mb-4">📝</div>
+        <h3 class="text-xl font-bold text-gray-900 mb-3">Academic Integrity</h3>
+        <p class="text-gray-600">Students misusing AI for assignments puts educators in difficult positions without tools or scripts to address it professionally.</p>
+      </div>
+      <div class="bg-white rounded-2xl p-8 shadow-sm border border-blue-100 text-center">
+        <div class="text-4xl mb-4">🗺️</div>
+        <h3 class="text-xl font-bold text-gray-900 mb-3">Safe AI Adoption</h3>
+        <p class="text-gray-600">No clear playbook exists for writing AI policies, communicating with parents, or integrating AI responsibly into curriculum.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SOLUTION ── -->
+<section id="solution" class="py-20 bg-white">
+  <div class="max-w-4xl mx-auto px-4 text-center">
+    <p class="text-sm font-semibold text-green-600 uppercase tracking-wider mb-2">Our Approach</p>
+    <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">Responsible AI, Built for Education</h2>
+    <p class="text-lg text-gray-600 mb-6">
+      EduSafe AI is a purpose-built platform that gives educators professionally designed AI tools aligned to their state's academic standards. Every tool is designed with a privacy-first mindset — no student names, no PII storage, no data sold.
+    </p>
+    <p class="text-lg text-gray-600">
+      From generating lesson plans aligned to your state's standards, to drafting parent communications in seven languages, to checking work for AI misuse — EduSafe AI equips schools with the complete toolkit for the AI era.
+    </p>
+  </div>
+</section>
+
+<!-- ── FEATURES ── -->
+<section id="features" class="py-20 bg-gray-50">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="text-center mb-14">
+      <p class="text-sm font-semibold text-indigo-600 uppercase tracking-wider mb-2">Platform Features</p>
+      <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">14 Tools. One Safe Platform.</h2>
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto">Everything an educator needs to adopt AI responsibly — all in one place, free to use.</p>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+        <div class="text-3xl mb-3">📖</div>
+        <h3 class="text-lg font-bold text-gray-900 mb-2">Standards-Aligned Lesson Planning</h3>
+        <p class="text-gray-600 text-sm">Generate complete lesson plans aligned to your state's standards — hooks, activities, exit tickets, and IEP notes included.</p>
+      </div>
+      <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+        <div class="text-3xl mb-3">📄</div>
+        <h3 class="text-lg font-bold text-gray-900 mb-2">AI Policy Generator</h3>
+        <p class="text-gray-600 text-sm">Create official, school-ready AI use policies tailored to your district's grade bands and unique concerns in seconds.</p>
+      </div>
+      <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+        <div class="text-3xl mb-3">🧪</div>
+        <h3 class="text-lg font-bold text-gray-900 mb-2">AI Integrity Checker</h3>
+        <p class="text-gray-600 text-sm">Analyze student work for AI misuse risk and get a professional conversation script to address it with students and parents.</p>
+      </div>
+      <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+        <div class="text-3xl mb-3">♿</div>
+        <h3 class="text-lg font-bold text-gray-900 mb-2">IEP / ELL Differentiation</h3>
+        <p class="text-gray-600 text-sm">Instantly adapt any lesson for students with IEPs, ELL needs, ADHD, dyslexia, hearing impairments, and more.</p>
+      </div>
+      <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+        <div class="text-3xl mb-3">🗣️</div>
+        <h3 class="text-lg font-bold text-gray-900 mb-2">Multilingual Parent Letters</h3>
+        <p class="text-gray-600 text-sm">Generate culturally appropriate parent letters in English, Spanish, Portuguese, French, Chinese, Arabic, and Haitian Creole.</p>
+      </div>
+      <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+        <div class="text-3xl mb-3">📊</div>
+        <h3 class="text-lg font-bold text-gray-900 mb-2">State Assessment Prep</h3>
+        <p class="text-gray-600 text-sm">Create practice questions for PARCC, SBAC, STAAR, FSA, and other state assessments — automatically updated per region.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── USERS ── -->
+<section class="py-20 bg-white">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="text-center mb-14">
+      <p class="text-sm font-semibold text-green-600 uppercase tracking-wider mb-2">Who It's For</p>
+      <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Who Uses EduSafe AI?</h2>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-6 text-center">
+      <div class="p-6 rounded-2xl bg-green-50 border border-green-100">
+        <div class="text-4xl mb-3">👩‍🏫</div>
+        <h3 class="font-bold text-gray-900 mb-1">Classroom Teachers</h3>
+        <p class="text-sm text-gray-600">Save hours on lesson planning, feedback, and communications</p>
+      </div>
+      <div class="p-6 rounded-2xl bg-blue-50 border border-blue-100">
+        <div class="text-4xl mb-3">🏫</div>
+        <h3 class="font-bold text-gray-900 mb-1">Administrators</h3>
+        <p class="text-sm text-gray-600">Draft AI policies and communicate changes across your school community</p>
+      </div>
+      <div class="p-6 rounded-2xl bg-indigo-50 border border-indigo-100">
+        <div class="text-4xl mb-3">🎓</div>
+        <h3 class="font-bold text-gray-900 mb-1">Special Educators</h3>
+        <p class="text-sm text-gray-600">Generate IEP accommodations and differentiated materials quickly</p>
+      </div>
+      <div class="p-6 rounded-2xl bg-purple-50 border border-purple-100">
+        <div class="text-4xl mb-3">📚</div>
+        <h3 class="font-bold text-gray-900 mb-1">Curriculum Coaches</h3>
+        <p class="text-sm text-gray-600">Align instruction to state standards across grade bands and subjects</p>
+      </div>
+      <div class="p-6 rounded-2xl bg-yellow-50 border border-yellow-100">
+        <div class="text-4xl mb-3">🌐</div>
+        <h3 class="font-bold text-gray-900 mb-1">International Schools</h3>
+        <p class="text-sm text-gray-600">Use worldwide CCSS/NGSS standards and multilingual tools</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MISSION ── -->
+<section id="mission" class="py-20 bg-indigo-50">
+  <div class="max-w-3xl mx-auto px-4 text-center">
+    <p class="text-sm font-semibold text-indigo-600 uppercase tracking-wider mb-2">Our Mission</p>
+    <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">Education Comes First. Always.</h2>
+    <p class="text-lg text-gray-700 mb-6">
+      EduSafe AI exists because educators deserve AI tools that respect their profession, protect their students, and strengthen — not replace — the teacher-student relationship.
+    </p>
+    <p class="text-lg text-gray-700">
+      We believe every school, regardless of budget, should have access to safe, responsible AI tools. That's why EduSafe AI is free to use. Our platform is designed by educators, for educators — with every feature grounded in responsible AI principles.
+    </p>
+  </div>
+</section>
+
+<!-- ── PLATFORM (the actual tool) ── -->
+<section id="platform" class="py-16 bg-gray-50">
+  <div class="max-w-5xl mx-auto px-4">
+    <div class="text-center mb-10">
+      <p class="text-sm font-semibold text-green-600 uppercase tracking-wider mb-2">The Tools</p>
+      <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">🛡️ EduSafe AI Platform</h2>
+      <p class="text-lg text-gray-600">Select your region and choose a tool to get started — no signup required.</p>
+    </div>
+
+    <div class="bg-white rounded-3xl shadow-lg overflow-hidden border border-gray-100">
+      <div class="state-selector-bar">
+        <label for="stateSelect">&#x1F5FA;&#xFE0F; Select Your Region:</label>
+        <select id="stateSelect" onchange="onStateChange()">
+          <option value="worldwide">&#x1F30D; Worldwide (CCSS/NGSS)</option>
+          <option value="AL">Alabama</option>
+          <option value="AK">Alaska</option>
+          <option value="AZ">Arizona</option>
+          <option value="AR">Arkansas</option>
+          <option value="CA">California</option>
+          <option value="CO">Colorado</option>
+          <option value="CT">Connecticut</option>
+          <option value="DE">Delaware</option>
+          <option value="FL">Florida</option>
+          <option value="GA">Georgia</option>
+          <option value="HI">Hawaii</option>
+          <option value="ID">Idaho</option>
+          <option value="IL">Illinois</option>
+          <option value="IN">Indiana</option>
+          <option value="IA">Iowa</option>
+          <option value="KS">Kansas</option>
+          <option value="KY">Kentucky</option>
+          <option value="LA">Louisiana</option>
+          <option value="ME">Maine</option>
+          <option value="MD">Maryland</option>
+          <option value="MA">Massachusetts</option>
+          <option value="MI">Michigan</option>
+          <option value="MN">Minnesota</option>
+          <option value="MS">Mississippi</option>
+          <option value="MO">Missouri</option>
+          <option value="MT">Montana</option>
+          <option value="NE">Nebraska</option>
+          <option value="NV">Nevada</option>
+          <option value="NH">New Hampshire</option>
+          <option value="NJ">New Jersey</option>
+          <option value="NM">New Mexico</option>
+          <option value="NY">New York</option>
+          <option value="NC">North Carolina</option>
+          <option value="ND">North Dakota</option>
+          <option value="OH">Ohio</option>
+          <option value="OK">Oklahoma</option>
+          <option value="OR">Oregon</option>
+          <option value="PA">Pennsylvania</option>
+          <option value="RI">Rhode Island</option>
+          <option value="SC">South Carolina</option>
+          <option value="SD">South Dakota</option>
+          <option value="TN">Tennessee</option>
+          <option value="TX">Texas</option>
+          <option value="UT">Utah</option>
+          <option value="VT">Vermont</option>
+          <option value="VA">Virginia</option>
+          <option value="WA">Washington</option>
+          <option value="WV">West Virginia</option>
+          <option value="WI">Wisconsin</option>
+          <option value="WY">Wyoming</option>
         </select>
+        <span id="state-banner" class="state-banner">&#x1F30D; Worldwide (CCSS/NGSS) Standards</span>
       </div>
-      <div class="field">
-        <label>Subject</label>
-        <select id="l3" onchange="updateStandards()">
-          <option value="Social Studies" selected>Social Studies</option>
-          <option value="ELA">ELA</option><option id="science-option" value="Science">Science</option>
-          <option value="Math">Math</option><option value="Health">Health</option>
-          <option value="World Languages">World Languages</option><option value="Tech/CS">Tech/CS</option>
-        </select>
-      </div>
-    </div>
-    <div class="field">
-      <label>Standard <span class="tip" data-tip="Optional — AI will auto-select if blank">?</span></label>
-      <select id="l1" onchange="showStdDesc()" disabled>
-        <option value="">-- Select a region above first --</option>
-      </select>
-      <div id="std-desc" class="std-desc"></div>
-    </div>
-    <div class="field">
-      <label>Duration</label>
-      <select id="l4"><option selected>45 min</option><option>60 min</option><option>90 min</option><option>Block</option></select>
-    </div>
-    <button class="btn" id="lb" onclick="call('/lesson',{standard:g('l1'),grade:g('l2'),subject:g('l3'),duration:g('l4')},'lo','lb','🎯 Generate Full Lesson Plan')">🎯 Generate Full Lesson Plan</button>
-    <div class="output-wrap"><div id="lo" class="output">Your lesson plan will appear here...</div><button class="copy-btn" onclick="cp('lo')">📋 Copy</button></div>
-  </div></div>
 
-  <!-- 2. FEEDBACK -->
-  <div id="feedback" class="tab"><div class="card">
-    <h2>💬 Student Feedback Generator</h2>
-    <p class="hint">Get constructive, rubric-aligned feedback without rewriting student work.</p>
-    <hr>
-    <div class="form-row two">
-      <div class="field">
-        <label>Grade</label>
-        <select id="f1"><option>K-2</option><option>3-5</option><option>6-8</option><option selected>9-12</option></select>
-      </div>
-      <div class="field">
-        <label>Rubric Type</label>
-        <select id="f2"><option selected>General Writing</option><option>Social Studies DBQ</option><option>ELA Essay</option><option>Science Lab Report</option></select>
-      </div>
-    </div>
-    <div class="field">
-      <label>Student Work <span class="tip" data-tip="Paste student writing below">?</span></label>
-      <textarea id="f3" rows="6" maxlength="4000" placeholder="Paste student work here..."></textarea>
-      <span class="char-counter"></span>
-    </div>
-    <button class="btn" id="fb" onclick="call('/feedback',{work:g('f3'),grade:g('f1'),rubric:g('f2')},'fo','fb','💬 Generate Feedback')">💬 Generate Feedback</button>
-    <div class="output-wrap"><div id="fo" class="output">Feedback will appear here...</div><button class="copy-btn" onclick="cp('fo')">📋 Copy</button></div>
-  </div></div>
+      <div class="p-6">
+        <div class="tabs" id="tool-tabs" role="tablist" aria-label="Tool categories">
+          <button class="active" role="tab" aria-selected="true" aria-controls="lesson" data-tab="lesson"><span class="tab-icon">📖</span>Lesson</button>
+          <button role="tab" aria-selected="false" aria-controls="feedback" data-tab="feedback"><span class="tab-icon">💬</span>Feedback</button>
+          <button role="tab" aria-selected="false" aria-controls="diff" data-tab="diff"><span class="tab-icon">♿</span>IEP/ELL</button>
+          <button role="tab" aria-selected="false" aria-controls="policy" data-tab="policy"><span class="tab-icon">📄</span>Policy</button>
+          <button role="tab" aria-selected="false" aria-controls="email" data-tab="email"><span class="tab-icon">✉️</span>Email</button>
+          <button role="tab" aria-selected="false" aria-controls="integrity" data-tab="integrity"><span class="tab-icon">🧪</span>AI Integrity</button>
+          <button role="tab" aria-selected="false" aria-controls="assessment_prep" data-tab="assessment_prep"><span class="tab-icon">📊</span>Assessment Prep</button>
+          <button role="tab" aria-selected="false" aria-controls="parent" data-tab="parent"><span class="tab-icon">🗣️</span>Parent Letter</button>
+          <button role="tab" aria-selected="false" aria-controls="unit" data-tab="unit"><span class="tab-icon">📅</span>Unit Plan</button>
+          <button role="tab" aria-selected="false" aria-controls="iep504" data-tab="iep504"><span class="tab-icon">🏫</span>504/IEP</button>
+          <button role="tab" aria-selected="false" aria-controls="quiz" data-tab="quiz"><span class="tab-icon">❓</span>Quiz</button>
+          <button role="tab" aria-selected="false" aria-controls="rubric" data-tab="rubric"><span class="tab-icon">🧾</span>Rubric</button>
+          <button role="tab" aria-selected="false" aria-controls="refine" data-tab="refine"><span class="tab-icon">🔧</span>Improve</button>
+          <button role="tab" aria-selected="false" aria-controls="sitefb" data-tab="sitefb"><span class="tab-icon">⭐</span>Contact Us</button>
+        </div>
 
-  <!-- 3. IEP/ELL -->
-  <div id="diff" class="tab"><div class="card">
-    <h2>♿ IEP/ELL Differentiator</h2>
-    <p class="hint">Adapt any lesson for students with IEPs, ELL needs, ADHD, dyslexia, and more.</p>
-    <hr>
-    <div class="field">
-      <label>Paste Your Lesson</label>
-      <textarea id="d1" rows="5" maxlength="4000" placeholder="Paste any lesson plan here..."></textarea>
-      <span class="char-counter"></span>
-    </div>
-    <div class="field">
-      <label>Student Needs</label>
-      <input id="d2" placeholder="e.g. ELL Level 2, ADHD, dyslexia, hearing impaired">
-    </div>
-    <button class="btn" id="db" onclick="call('/differentiate',{lesson:g('d1'),needs:g('d2')},'do','db','♿ Differentiate This Lesson')">♿ Differentiate This Lesson</button>
-    <div class="output-wrap"><div id="do" class="output">Differentiated version will appear here...</div><button class="copy-btn" onclick="cp('do')">📋 Copy</button></div>
-  </div></div>
+        <!-- 1. LESSON -->
+        <div id="lesson" class="tab active"><div class="card">
+          <h2>📖 AI Lesson Designer</h2>
+          <p class="hint">Generate a complete standards-aligned lesson plan with hooks, activities, and exit tickets.</p>
+          <hr>
+          <div class="form-row two">
+            <div class="field">
+              <label>Grade</label>
+              <select id="l2" onchange="updateStandards()">
+                <option value="K-2">K-2</option><option value="3-5">3-5</option>
+                <option value="6-8" selected>6-8</option><option value="9-12">9-12</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Subject</label>
+              <select id="l3" onchange="updateStandards()">
+                <option value="Social Studies" selected>Social Studies</option>
+                <option value="ELA">ELA</option><option id="science-option" value="Science">Science</option>
+                <option value="Math">Math</option><option value="Health">Health</option>
+                <option value="World Languages">World Languages</option><option value="Tech/CS">Tech/CS</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label>Standard <span class="tip" data-tip="Optional — AI will auto-select if blank">?</span></label>
+            <select id="l1" onchange="showStdDesc()" disabled>
+              <option value="">-- Select a region above first --</option>
+            </select>
+            <div id="std-desc" class="std-desc"></div>
+          </div>
+          <div class="field">
+            <label>Duration</label>
+            <select id="l4"><option selected>45 min</option><option>60 min</option><option>90 min</option><option>Block</option></select>
+          </div>
+          <button class="btn" id="lb" onclick="call('/lesson',{standard:g('l1'),grade:g('l2'),subject:g('l3'),duration:g('l4')},'lo','lb','🎯 Generate Full Lesson Plan')">🎯 Generate Full Lesson Plan</button>
+          <div class="output-wrap"><div id="lo" class="output">Your lesson plan will appear here...</div><button class="copy-btn" onclick="cp('lo')">📋 Copy</button></div>
+        </div></div>
 
-  <!-- 4. POLICY -->
-  <div id="policy" class="tab"><div class="card">
-    <h2>📄 AI Policy Generator</h2>
-    <p class="hint">Generate an official AI use policy for your school or district.</p>
-    <hr>
-    <div class="form-row two">
-      <div class="field"><label>School / District</label><input id="p1" placeholder="Enter your school name"></div>
-      <div class="field"><label>School Year</label><input id="p2" value="2025-2026"></div>
-    </div>
-    <div class="form-row two">
-      <div class="field">
-        <label>Grade Band</label>
-        <select id="p3"><option>K-2</option><option>3-5</option><option>6-8</option><option selected>9-12</option><option>All grades</option></select>
-      </div>
-      <div class="field"><label>Main Concerns</label><input id="p4" placeholder="e.g. plagiarism, data privacy, parent communication"></div>
-    </div>
-    <button class="btn" id="pb" onclick="call('/policy',{school:g('p1'),year:g('p2'),grade:g('p3'),concerns:g('p4')},'po','pb','📄 Generate Official Policy')">📄 Generate Official Policy</button>
-    <div class="output-wrap"><div id="po" class="output">Policy will appear here...</div><button class="copy-btn" onclick="cp('po')">📋 Copy</button></div>
-  </div></div>
+        <!-- 2. FEEDBACK -->
+        <div id="feedback" class="tab"><div class="card">
+          <h2>💬 Student Feedback Generator</h2>
+          <p class="hint">Get constructive, rubric-aligned feedback without rewriting student work.</p>
+          <hr>
+          <div class="form-row two">
+            <div class="field">
+              <label>Grade</label>
+              <select id="f1"><option>K-2</option><option>3-5</option><option>6-8</option><option selected>9-12</option></select>
+            </div>
+            <div class="field">
+              <label>Rubric Type</label>
+              <select id="f2"><option selected>General Writing</option><option>Social Studies DBQ</option><option>ELA Essay</option><option>Science Lab Report</option></select>
+            </div>
+          </div>
+          <div class="field">
+            <label>Student Work <span class="tip" data-tip="Paste student writing below">?</span></label>
+            <textarea id="f3" rows="6" maxlength="4000" placeholder="Paste student work here..."></textarea>
+            <span class="char-counter"></span>
+          </div>
+          <button class="btn" id="fb" onclick="call('/feedback',{work:g('f3'),grade:g('f1'),rubric:g('f2')},'fo','fb','💬 Generate Feedback')">💬 Generate Feedback</button>
+          <div class="output-wrap"><div id="fo" class="output">Feedback will appear here...</div><button class="copy-btn" onclick="cp('fo')">📋 Copy</button></div>
+        </div></div>
 
-  <!-- 5. EMAIL -->
-  <div id="email" class="tab"><div class="card">
-    <h2>✉️ Email Drafter</h2>
-    <p class="hint">Draft professional emails to parents, admin, or colleagues in seconds.</p>
-    <hr>
-    <div class="form-row two">
-      <div class="field">
-        <label>Recipient</label>
-        <select id="e1"><option selected>Parent</option><option>Principal</option><option>Colleague</option><option>Superintendent</option><option>IEP Team</option><option>School Board</option></select>
-      </div>
-      <div class="field">
-        <label>Tone</label>
-        <select id="e2"><option selected>professional</option><option>friendly</option><option>formal</option><option>urgent</option><option>empathetic</option></select>
-      </div>
-    </div>
-    <div class="field"><label>What is the email about?</label><input id="e3" placeholder="e.g. Student used AI without permission on assignment"></div>
-    <button class="btn" id="eb" onclick="call('/email',{recipient:g('e1'),tone:g('e2'),topic:g('e3')},'eo','eb','✉️ Draft Email')">✉️ Draft Email</button>
-    <div class="output-wrap"><div id="eo" class="output">Email will appear here...</div><button class="copy-btn" onclick="cp('eo')">📋 Copy</button></div>
-  </div></div>
+        <!-- 3. IEP/ELL -->
+        <div id="diff" class="tab"><div class="card">
+          <h2>♿ IEP/ELL Differentiator</h2>
+          <p class="hint">Adapt any lesson for students with IEPs, ELL needs, ADHD, dyslexia, and more.</p>
+          <hr>
+          <div class="field">
+            <label>Paste Your Lesson</label>
+            <textarea id="d1" rows="5" maxlength="4000" placeholder="Paste any lesson plan here..."></textarea>
+            <span class="char-counter"></span>
+          </div>
+          <div class="field">
+            <label>Student Needs</label>
+            <input id="d2" placeholder="e.g. ELL Level 2, ADHD, dyslexia, hearing impaired">
+          </div>
+          <button class="btn" id="db" onclick="call('/differentiate',{lesson:g('d1'),needs:g('d2')},'do','db','♿ Differentiate This Lesson')">♿ Differentiate This Lesson</button>
+          <div class="output-wrap"><div id="do" class="output">Differentiated version will appear here...</div><button class="copy-btn" onclick="cp('do')">📋 Copy</button></div>
+        </div></div>
 
-  <!-- 6. AI INTEGRITY -->
-  <div id="integrity" class="tab"><div class="card">
-    <h2>🧪 AI Integrity Checker <span class="new-badge">UNIQUE</span></h2>
-    <p class="hint">Paste student work to get an AI-risk analysis plus a conversation script to discuss it professionally.</p>
-    <hr>
-    <div class="form-row two">
-      <div class="field">
-        <label>Grade</label>
-        <select id="i1"><option>K-2</option><option>3-5</option><option>6-8</option><option selected>9-12</option></select>
-      </div>
-      <div class="field">
-        <label>Assignment Type</label>
-        <select id="i2"><option selected>Essay</option><option>Research Paper</option><option>Short Answer</option><option>Lab Report</option><option>Creative Writing</option></select>
-      </div>
-    </div>
-    <div class="field"><label>Student Work</label><textarea id="i3" rows="7" maxlength="4000" placeholder="Paste student work here..."></textarea><span class="char-counter"></span></div>
-    <button class="btn" id="ib" onclick="call('/integrity',{work:g('i3'),grade:g('i1'),type:g('i2')},'io','ib','🧪 Check AI Integrity')">🧪 Check AI Integrity</button>
-    <div class="output-wrap"><div id="io" class="output">Analysis will appear here...</div><button class="copy-btn" onclick="cp('io')">📋 Copy</button></div>
-  </div></div>
+        <!-- 4. POLICY -->
+        <div id="policy" class="tab"><div class="card">
+          <h2>📄 AI Policy Generator</h2>
+          <p class="hint">Generate an official AI use policy for your school or district.</p>
+          <hr>
+          <div class="form-row two">
+            <div class="field"><label>School / District</label><input id="p1" placeholder="Enter your school name"></div>
+            <div class="field"><label>School Year</label><input id="p2" value="2025-2026"></div>
+          </div>
+          <div class="form-row two">
+            <div class="field">
+              <label>Grade Band</label>
+              <select id="p3"><option>K-2</option><option>3-5</option><option>6-8</option><option selected>9-12</option><option>All grades</option></select>
+            </div>
+            <div class="field"><label>Main Concerns</label><input id="p4" placeholder="e.g. plagiarism, data privacy, parent communication"></div>
+          </div>
+          <button class="btn" id="pb" onclick="call('/policy',{school:g('p1'),year:g('p2'),grade:g('p3'),concerns:g('p4')},'po','pb','📄 Generate Official Policy')">📄 Generate Official Policy</button>
+          <div class="output-wrap"><div id="po" class="output">Policy will appear here...</div><button class="copy-btn" onclick="cp('po')">📋 Copy</button></div>
+        </div></div>
 
-  <!-- 7. ASSESSMENT PREP -->
-  <div id="assessment_prep" class="tab"><div class="card">
-    <h2 id="assess-title">📊 Standards-Based Assessment Prep <span class="new-badge">UNIQUE</span></h2>
-    <p id="assess-hint" class="hint">Generate standards-aligned practice questions for any assessment framework.</p>
-    <hr>
-    <div class="form-row two">
-      <div class="field">
-        <label>Grade</label>
-        <select id="n1"><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option selected>8</option><option>9</option><option>10</option><option>11</option></select>
+        <!-- 5. EMAIL -->
+        <div id="email" class="tab"><div class="card">
+          <h2>✉️ Email Drafter</h2>
+          <p class="hint">Draft professional emails to parents, admin, or colleagues in seconds.</p>
+          <hr>
+          <div class="form-row two">
+            <div class="field">
+              <label>Recipient</label>
+              <select id="e1"><option selected>Parent</option><option>Principal</option><option>Colleague</option><option>Superintendent</option><option>IEP Team</option><option>School Board</option></select>
+            </div>
+            <div class="field">
+              <label>Tone</label>
+              <select id="e2"><option selected>professional</option><option>friendly</option><option>formal</option><option>urgent</option><option>empathetic</option></select>
+            </div>
+          </div>
+          <div class="field"><label>What is the email about?</label><input id="e3" placeholder="e.g. Student used AI without permission on assignment"></div>
+          <button class="btn" id="eb" onclick="call('/email',{recipient:g('e1'),tone:g('e2'),topic:g('e3')},'eo','eb','✉️ Draft Email')">✉️ Draft Email</button>
+          <div class="output-wrap"><div id="eo" class="output">Email will appear here...</div><button class="copy-btn" onclick="cp('eo')">📋 Copy</button></div>
+        </div></div>
+
+        <!-- 6. AI INTEGRITY -->
+        <div id="integrity" class="tab"><div class="card">
+          <h2>🧪 AI Integrity Checker <span class="new-badge">UNIQUE</span></h2>
+          <p class="hint">Paste student work to get an AI-risk analysis plus a conversation script to discuss it professionally.</p>
+          <hr>
+          <div class="form-row two">
+            <div class="field">
+              <label>Grade</label>
+              <select id="i1"><option>K-2</option><option>3-5</option><option>6-8</option><option selected>9-12</option></select>
+            </div>
+            <div class="field">
+              <label>Assignment Type</label>
+              <select id="i2"><option selected>Essay</option><option>Research Paper</option><option>Short Answer</option><option>Lab Report</option><option>Creative Writing</option></select>
+            </div>
+          </div>
+          <div class="field"><label>Student Work</label><textarea id="i3" rows="7" maxlength="4000" placeholder="Paste student work here..."></textarea><span class="char-counter"></span></div>
+          <button class="btn" id="ib" onclick="call('/integrity',{work:g('i3'),grade:g('i1'),type:g('i2')},'io','ib','🧪 Check AI Integrity')">🧪 Check AI Integrity</button>
+          <div class="output-wrap"><div id="io" class="output">Analysis will appear here...</div><button class="copy-btn" onclick="cp('io')">📋 Copy</button></div>
+        </div></div>
+
+        <!-- 7. ASSESSMENT PREP -->
+        <div id="assessment_prep" class="tab"><div class="card">
+          <h2 id="assess-title">📊 Standards-Based Assessment Prep <span class="new-badge">UNIQUE</span></h2>
+          <p id="assess-hint" class="hint">Generate standards-aligned practice questions for any assessment framework.</p>
+          <hr>
+          <div class="form-row two">
+            <div class="field">
+              <label>Grade</label>
+              <select id="n1"><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option selected>8</option><option>9</option><option>10</option><option>11</option></select>
+            </div>
+            <div class="field">
+              <label>Subject</label>
+              <select id="n2"><option selected>ELA</option><option>Math</option><option id="assess-science-option">Science (NGSS)</option></select>
+            </div>
+          </div>
+          <div class="form-row two">
+            <div class="field"><label id="assess-std-label">Standard <span class="tip" data-tip="Leave blank for auto-select">?</span></label><input id="n3" placeholder="e.g. RL.8.1 or leave blank"></div>
+            <div class="field">
+              <label>Question Type</label>
+              <select id="n4"><option selected>Multiple Choice</option><option>Short Answer</option><option>Evidence-Based</option><option>Mixed</option></select>
+            </div>
+          </div>
+          <div class="field">
+            <label>Number of Questions</label>
+            <select id="n5"><option selected>5</option><option>10</option><option>15</option></select>
+          </div>
+          <button class="btn" id="nb" onclick="call('/assessment_prep',{grade:g('n1'),subject:g('n2'),standard:g('n3'),qtype:g('n4'),num:g('n5')},'no','nb','📊 Generate Assessment Practice')">📊 Generate Assessment Practice Questions</button>
+          <div class="output-wrap"><div id="no" class="output">Practice questions will appear here...</div><button class="copy-btn" onclick="cp('no')">📋 Copy</button></div>
+        </div></div>
+
+        <!-- 8. PARENT LETTER -->
+        <div id="parent" class="tab"><div class="card">
+          <h2>🗣️ Parent Letter Generator <span class="new-badge">UNIQUE</span></h2>
+          <p class="hint">Generate culturally appropriate parent letters in multiple languages.</p>
+          <hr>
+          <div class="form-row two">
+            <div class="field">
+              <label>Language</label>
+              <select id="pl1"><option selected>English</option><option>Spanish</option><option>Portuguese</option><option>French</option><option>Chinese (Simplified)</option><option>Arabic</option><option>Haitian Creole</option></select>
+            </div>
+            <div class="field">
+              <label>Letter Type</label>
+              <select id="pl2"><option selected>Classroom AI Policy</option><option>Student Behavior</option><option>Academic Progress</option><option>IEP Meeting Invite</option><option>Field Trip Permission</option><option>Homework Policy</option></select>
+            </div>
+          </div>
+          <div class="field"><label>Key Details</label><input id="pl3" placeholder="e.g. Meeting on March 5th at 3pm"></div>
+          <div class="field"><label>Teacher Name &amp; School</label><input id="pl4" placeholder="e.g. Ms. Johnson, Lincoln Elementary"></div>
+          <button class="btn" id="plb" onclick="call('/parent_letter',{lang:g('pl1'),type:g('pl2'),details:g('pl3'),teacher:g('pl4')},'plo','plb','🗣️ Generate Parent Letter')">🗣️ Generate Parent Letter</button>
+          <div class="output-wrap"><div id="plo" class="output">Parent letter will appear here...</div><button class="copy-btn" onclick="cp('plo')">📋 Copy</button></div>
+        </div></div>
+
+        <!-- 9. UNIT PLANNER -->
+        <div id="unit" class="tab"><div class="card">
+          <h2>📅 2-Week Unit Planner <span class="new-badge">UNIQUE</span></h2>
+          <p class="hint">Plan a complete 2-week unit with daily breakdown, assessments, and differentiation.</p>
+          <hr>
+          <div class="form-row two">
+            <div class="field"><label>Unit Topic</label><input id="u1" placeholder="e.g. American Revolution, Fractions, Ecosystems"></div>
+            <div class="field"><label>Standard <span class="tip" data-tip="Optional — AI will auto-select if blank">?</span></label><input id="u2" placeholder="e.g. 6.1.8.HistoryCC.3 or local standard"></div>
+          </div>
+          <div class="form-row two">
+            <div class="field">
+              <label>Grade</label>
+              <select id="u3"><option>K-2</option><option>3-5</option><option selected>6-8</option><option>9-12</option></select>
+            </div>
+            <div class="field">
+              <label>Subject</label>
+              <select id="u4"><option selected>Social Studies</option><option>ELA</option><option>Science</option><option>Math</option><option>Health</option></select>
+            </div>
+          </div>
+          <div class="field">
+            <label>Class Duration</label>
+            <select id="u5"><option selected>45 min</option><option>60 min</option><option>90 min</option><option>Block</option></select>
+          </div>
+          <button class="btn" id="ub" onclick="call('/unit_plan',{topic:g('u1'),standard:g('u2'),grade:g('u3'),subject:g('u4'),duration:g('u5')},'uo','ub','📅 Generate 2-Week Unit Plan')">📅 Generate 2-Week Unit Plan</button>
+          <div class="output-wrap"><div id="uo" class="output">Unit plan will appear here...</div><button class="copy-btn" onclick="cp('uo')">📋 Copy</button></div>
+        </div></div>
+
+        <!-- 10. 504/IEP -->
+        <div id="iep504" class="tab"><div class="card">
+          <h2>🏫 504 vs IEP Helper <span class="new-badge">UNIQUE</span></h2>
+          <p class="hint">Clarify 504 vs IEP differences and generate accommodations for any disability or need.</p>
+          <hr>
+          <div class="form-row two">
+            <div class="field">
+              <label>Plan Type</label>
+              <select id="s1">
+                <option selected>Explain difference: 504 vs IEP</option>
+                <option>Generate 504 accommodations</option>
+                <option>Generate IEP accommodations</option>
+                <option>Generate both 504 &amp; IEP options</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Grade</label>
+              <select id="s2"><option>K-2</option><option>3-5</option><option selected>6-8</option><option>9-12</option></select>
+            </div>
+          </div>
+          <div class="field"><label>Student Disability / Need</label><input id="s3" placeholder="e.g. ADHD, anxiety, dyslexia, autism, hearing impaired"></div>
+          <div class="field"><label>Subject Context</label><input id="s4" placeholder="e.g. ELA class, standardized testing, all subjects"></div>
+          <button class="btn" id="sb" onclick="call('/iep504',{plan:g('s1'),grade:g('s2'),disability:g('s3'),context:g('s4')},'so','sb','🏫 Generate Accommodations')">🏫 Generate Accommodations</button>
+          <div class="output-wrap"><div id="so" class="output">Accommodations will appear here...</div><button class="copy-btn" onclick="cp('so')">📋 Copy</button></div>
+        </div></div>
+
+        <!-- 11. QUIZ BUILDER -->
+        <div id="quiz" class="tab"><div class="card">
+          <h2>❓ Quiz Builder</h2>
+          <p class="hint">Create standards-aligned formative quizzes with answer keys.</p>
+          <hr>
+          <div class="form-row two">
+            <div class="field"><label>Topic</label><input id="q1" placeholder="e.g. Civil War causes"></div>
+            <div class="field"><label>Grade</label><select id="q2"><option>K-2</option><option>3-5</option><option selected>6-8</option><option>9-12</option></select></div>
+          </div>
+          <div class="form-row two">
+            <div class="field"><label>Question Type</label><select id="q3"><option selected>Mixed</option><option>Multiple Choice</option><option>Short Answer</option></select></div>
+            <div class="field"><label>Number of Questions</label><select id="q4"><option>5</option><option selected>10</option><option>15</option></select></div>
+          </div>
+          <button class="btn" id="qb" onclick="call('/quiz',{topic:g('q1'),grade:g('q2'),qtype:g('q3'),num:g('q4')},'qo','qb','❓ Generate Quiz')">❓ Generate Quiz</button>
+          <div class="output-wrap"><div id="qo" class="output">Quiz will appear here...</div><button class="copy-btn" onclick="cp('qo')">📋 Copy</button></div>
+        </div></div>
+
+        <!-- 12. RUBRIC BUILDER -->
+        <div id="rubric" class="tab"><div class="card">
+          <h2>🧾 Rubric Builder</h2>
+          <p class="hint">Generate clear performance-level rubrics aligned to your assignment goals.</p>
+          <hr>
+          <div class="form-row two">
+            <div class="field"><label>Assignment</label><input id="r1" placeholder="e.g. Argument essay"></div>
+            <div class="field"><label>Grade</label><select id="r2"><option>K-2</option><option>3-5</option><option selected>6-8</option><option>9-12</option></select></div>
+          </div>
+          <div class="form-row two">
+            <div class="field"><label>Criteria Count</label><select id="r3"><option>3</option><option selected>4</option><option>5</option></select></div>
+            <div class="field"><label>Scale</label><select id="r4"><option selected>4-point</option><option>5-point</option></select></div>
+          </div>
+          <button class="btn" id="rb" onclick="call('/rubric',{assignment:g('r1'),grade:g('r2'),criteria:g('r3'),scale:g('r4')},'ro','rb','🧾 Generate Rubric')">🧾 Generate Rubric</button>
+          <div class="output-wrap"><div id="ro" class="output">Rubric will appear here...</div><button class="copy-btn" onclick="cp('ro')">📋 Copy</button></div>
+        </div></div>
+
+        <!-- 13. IMPROVE AI RESPONSE -->
+        <div id="refine" class="tab"><div class="card">
+          <h2>🔧 Improve AI Response</h2>
+          <p class="hint">Ask the AI to revise any answer — make it shorter, simpler, add accommodations, etc.</p>
+          <hr>
+          <div class="field"><label>AI Output to Improve</label><textarea id="rf1" rows="6" maxlength="4000" placeholder="Paste the AI response you want to improve..."></textarea><span class="char-counter"></span></div>
+          <div class="field"><label>What should be fixed?</label><input id="rf2" placeholder="e.g. make it shorter, add accommodations, simpler language"></div>
+          <button class="btn" id="rfb" onclick="call('/refine_response',{response:g('rf1'),request:g('rf2')},'rfo','rfb','🔧 Improve Response')">🔧 Improve Response</button>
+          <div class="output-wrap"><div id="rfo" class="output">Refined response will appear here...</div><button class="copy-btn" onclick="cp('rfo')">📋 Copy</button></div>
+        </div></div>
+
+        <!-- 14. CONTACT US -->
+        <div id="sitefb" class="tab"><div class="card">
+          <h2>⭐ Contact Us</h2>
+          <p>Have ideas, suggestions, or found a bug? We'd love to hear from you!</p>
+          <hr>
+          <p style="font-size:1.1em">📧 Email us at: <strong>info@edusafeai.com</strong></p>
+        </div></div>
+
+      </div><!-- /p-6 -->
+    </div><!-- /white card -->
+
+    <p class="text-center text-xs text-gray-400 mt-6">
+      🔒 EduSafe AI does not store student data. Do not enter personally identifiable student information.<br>
+      ⚠️ AI-generated content may contain inaccuracies. This tool is for informational purposes only and does not constitute legal, medical, or professional advice. Always consult qualified professionals for official IEP, 504, or compliance decisions.
+    </p>
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section id="about" class="py-20 bg-white">
+  <div class="max-w-3xl mx-auto px-4 text-center">
+    <p class="text-sm font-semibold text-green-600 uppercase tracking-wider mb-2">About Us</p>
+    <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">Built by Fresh Sky LLC</h2>
+    <p class="text-lg text-gray-600 mb-6">
+      EduSafe AI is a product of Fresh Sky LLC, a US-based company dedicated to building responsible technology for education. We believe that the best AI tools for schools are ones that amplify educator expertise while never compromising student safety.
+    </p>
+    <p class="text-lg text-gray-600">
+      Our team has built EduSafe AI with direct input from classroom teachers, special education coordinators, and district administrators across the United States. Every feature reflects a real educator need — and every design decision reflects our commitment to safe, ethical AI.
+    </p>
+  </div>
+</section>
+
+<!-- ── RESPONSIBLE AI ── -->
+<section class="py-16 bg-gradient-to-br from-green-800 to-green-900 text-white">
+  <div class="max-w-4xl mx-auto px-4 text-center">
+    <h2 class="text-3xl font-bold mb-6">🔒 Our Responsible AI Commitments</h2>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+      <div class="bg-white/10 rounded-xl p-5">
+        <div class="text-3xl mb-2">🚫</div>
+        <h3 class="font-bold mb-1">No Student PII Stored</h3>
+        <p class="text-green-100 text-sm">We never retain personally identifiable student information</p>
       </div>
-      <div class="field">
-        <label>Subject</label>
-        <select id="n2"><option selected>ELA</option><option>Math</option><option id="assess-science-option">Science (NGSS)</option></select>
+      <div class="bg-white/10 rounded-xl p-5">
+        <div class="text-3xl mb-2">🏛️</div>
+        <h3 class="font-bold mb-1">FERPA-Aware Design</h3>
+        <p class="text-green-100 text-sm">Built with FERPA principles guiding every architectural decision</p>
+      </div>
+      <div class="bg-white/10 rounded-xl p-5">
+        <div class="text-3xl mb-2">🤝</div>
+        <h3 class="font-bold mb-1">Transparent AI</h3>
+        <p class="text-green-100 text-sm">Always disclose AI use and encourage critical review of all outputs</p>
+      </div>
+      <div class="bg-white/10 rounded-xl p-5">
+        <div class="text-3xl mb-2">👩‍🏫</div>
+        <h3 class="font-bold mb-1">Educator-Led</h3>
+        <p class="text-green-100 text-sm">Every tool is designed to support — never replace — teacher judgment</p>
       </div>
     </div>
-    <div class="form-row two">
-      <div class="field"><label id="assess-std-label">Standard <span class="tip" data-tip="Leave blank for auto-select">?</span></label><input id="n3" placeholder="e.g. RL.8.1 or leave blank"></div>
-      <div class="field">
-        <label>Question Type</label>
-        <select id="n4"><option selected>Multiple Choice</option><option>Short Answer</option><option>Evidence-Based</option><option>Mixed</option></select>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="bg-gray-900 text-gray-400 py-12">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="grid md:grid-cols-3 gap-10 mb-10">
+      <div>
+        <div class="flex items-center gap-2 text-white font-bold text-lg mb-3">
+          <span class="text-2xl">🛡️</span><span>EduSafe AI</span>
+        </div>
+        <p class="text-sm leading-relaxed">Safe, responsible AI tools for K-12 educators worldwide. Built by Fresh Sky LLC.</p>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-3">Contact</h4>
+        <p class="text-sm">📧 <a href="mailto:info@edusafeai.com" class="hover:text-white transition-colors">info@edusafeai.com</a></p>
+        <p class="text-sm mt-1">🇺🇸 United States</p>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-3">Legal</h4>
+        <ul class="text-sm space-y-1">
+          <li><a href="/privacy" class="hover:text-white transition-colors">Privacy Policy</a></li>
+          <li><a href="/privacy#terms" class="hover:text-white transition-colors">Terms of Use</a></li>
+        </ul>
       </div>
     </div>
-    <div class="field">
-      <label>Number of Questions</label>
-      <select id="n5"><option selected>5</option><option>10</option><option>15</option></select>
+    <div class="border-t border-gray-800 pt-8 text-xs text-center space-y-2">
+      <p>🔒 EduSafe AI does not store student data. Do not enter personally identifiable student information.</p>
+      <p>⚠️ AI-generated content may contain inaccuracies. This tool is for informational purposes only and does not constitute legal, medical, or professional advice.</p>
+      <p class="text-gray-500">© 2026 Fresh Sky LLC · EduSafe AI · All rights reserved.</p>
     </div>
-    <button class="btn" id="nb" onclick="call('/assessment_prep',{grade:g('n1'),subject:g('n2'),standard:g('n3'),qtype:g('n4'),num:g('n5')},'no','nb','📊 Generate Assessment Practice')">📊 Generate Assessment Practice Questions</button>
-    <div class="output-wrap"><div id="no" class="output">Practice questions will appear here...</div><button class="copy-btn" onclick="cp('no')">📋 Copy</button></div>
-  </div></div>
-
-  <!-- 8. PARENT LETTER -->
-  <div id="parent" class="tab"><div class="card">
-    <h2>🗣️ Parent Letter Generator <span class="new-badge">UNIQUE</span></h2>
-    <p class="hint">Generate culturally appropriate parent letters in multiple languages.</p>
-    <hr>
-    <div class="form-row two">
-      <div class="field">
-        <label>Language</label>
-        <select id="pl1"><option selected>English</option><option>Spanish</option><option>Portuguese</option><option>French</option><option>Chinese (Simplified)</option><option>Arabic</option><option>Haitian Creole</option></select>
-      </div>
-      <div class="field">
-        <label>Letter Type</label>
-        <select id="pl2"><option selected>Classroom AI Policy</option><option>Student Behavior</option><option>Academic Progress</option><option>IEP Meeting Invite</option><option>Field Trip Permission</option><option>Homework Policy</option></select>
-      </div>
-    </div>
-    <div class="field"><label>Key Details</label><input id="pl3" placeholder="e.g. Meeting on March 5th at 3pm"></div>
-    <div class="field"><label>Teacher Name & School</label><input id="pl4" placeholder="e.g. Ms. Johnson, Lincoln Elementary"></div>
-    <button class="btn" id="plb" onclick="call('/parent_letter',{lang:g('pl1'),type:g('pl2'),details:g('pl3'),teacher:g('pl4')},'plo','plb','🗣️ Generate Parent Letter')">🗣️ Generate Parent Letter</button>
-    <div class="output-wrap"><div id="plo" class="output">Parent letter will appear here...</div><button class="copy-btn" onclick="cp('plo')">📋 Copy</button></div>
-  </div></div>
-
-  <!-- 9. UNIT PLANNER -->
-  <div id="unit" class="tab"><div class="card">
-    <h2>📅 2-Week Unit Planner <span class="new-badge">UNIQUE</span></h2>
-    <p class="hint">Plan a complete 2-week unit with daily breakdown, assessments, and differentiation.</p>
-    <hr>
-    <div class="form-row two">
-      <div class="field"><label>Unit Topic</label><input id="u1" placeholder="e.g. American Revolution, Fractions, Ecosystems"></div>
-      <div class="field"><label>Standard <span class="tip" data-tip="Optional — AI will auto-select if blank">?</span></label><input id="u2" placeholder="e.g. 6.1.8.HistoryCC.3 or local standard"></div>
-    </div>
-    <div class="form-row two">
-      <div class="field">
-        <label>Grade</label>
-        <select id="u3"><option>K-2</option><option>3-5</option><option selected>6-8</option><option>9-12</option></select>
-      </div>
-      <div class="field">
-        <label>Subject</label>
-        <select id="u4"><option selected>Social Studies</option><option>ELA</option><option>Science</option><option>Math</option><option>Health</option></select>
-      </div>
-    </div>
-    <div class="field">
-      <label>Class Duration</label>
-      <select id="u5"><option selected>45 min</option><option>60 min</option><option>90 min</option><option>Block</option></select>
-    </div>
-    <button class="btn" id="ub" onclick="call('/unit_plan',{topic:g('u1'),standard:g('u2'),grade:g('u3'),subject:g('u4'),duration:g('u5')},'uo','ub','📅 Generate 2-Week Unit Plan')">📅 Generate 2-Week Unit Plan</button>
-    <div class="output-wrap"><div id="uo" class="output">Unit plan will appear here...</div><button class="copy-btn" onclick="cp('uo')">📋 Copy</button></div>
-  </div></div>
-
-  <!-- 10. 504/IEP -->
-  <div id="iep504" class="tab"><div class="card">
-    <h2>🏫 504 vs IEP Helper <span class="new-badge">UNIQUE</span></h2>
-    <p class="hint">Clarify 504 vs IEP differences and generate accommodations for any disability or need.</p>
-    <hr>
-    <div class="form-row two">
-      <div class="field">
-        <label>Plan Type</label>
-        <select id="s1">
-          <option selected>Explain difference: 504 vs IEP</option>
-          <option>Generate 504 accommodations</option>
-          <option>Generate IEP accommodations</option>
-          <option>Generate both 504 & IEP options</option>
-        </select>
-      </div>
-      <div class="field">
-        <label>Grade</label>
-        <select id="s2"><option>K-2</option><option>3-5</option><option selected>6-8</option><option>9-12</option></select>
-      </div>
-    </div>
-    <div class="field"><label>Student Disability / Need</label><input id="s3" placeholder="e.g. ADHD, anxiety, dyslexia, autism, hearing impaired"></div>
-    <div class="field"><label>Subject Context</label><input id="s4" placeholder="e.g. ELA class, standardized testing, all subjects"></div>
-    <button class="btn" id="sb" onclick="call('/iep504',{plan:g('s1'),grade:g('s2'),disability:g('s3'),context:g('s4')},'so','sb','🏫 Generate Accommodations')">🏫 Generate Accommodations</button>
-    <div class="output-wrap"><div id="so" class="output">Accommodations will appear here...</div><button class="copy-btn" onclick="cp('so')">📋 Copy</button></div>
-  </div></div>
-
-
-  <!-- 11. QUIZ BUILDER -->
-  <div id="quiz" class="tab"><div class="card">
-    <h2>❓ Quiz Builder</h2>
-    <p class="hint">Create standards-aligned formative quizzes with answer keys.</p>
-    <hr>
-    <div class="form-row two">
-      <div class="field"><label>Topic</label><input id="q1" placeholder="e.g. Civil War causes"></div>
-      <div class="field"><label>Grade</label><select id="q2"><option>K-2</option><option>3-5</option><option selected>6-8</option><option>9-12</option></select></div>
-    </div>
-    <div class="form-row two">
-      <div class="field"><label>Question Type</label><select id="q3"><option selected>Mixed</option><option>Multiple Choice</option><option>Short Answer</option></select></div>
-      <div class="field"><label>Number of Questions</label><select id="q4"><option>5</option><option selected>10</option><option>15</option></select></div>
-    </div>
-    <button class="btn" id="qb" onclick="call('/quiz',{topic:g('q1'),grade:g('q2'),qtype:g('q3'),num:g('q4')},'qo','qb','❓ Generate Quiz')">❓ Generate Quiz</button>
-    <div class="output-wrap"><div id="qo" class="output">Quiz will appear here...</div><button class="copy-btn" onclick="cp('qo')">📋 Copy</button></div>
-  </div></div>
-
-  <!-- 12. RUBRIC BUILDER -->
-  <div id="rubric" class="tab"><div class="card">
-    <h2>🧾 Rubric Builder</h2>
-    <p class="hint">Generate clear performance-level rubrics aligned to your assignment goals.</p>
-    <hr>
-    <div class="form-row two">
-      <div class="field"><label>Assignment</label><input id="r1" placeholder="e.g. Argument essay"></div>
-      <div class="field"><label>Grade</label><select id="r2"><option>K-2</option><option>3-5</option><option selected>6-8</option><option>9-12</option></select></div>
-    </div>
-    <div class="form-row two">
-      <div class="field"><label>Criteria Count</label><select id="r3"><option>3</option><option selected>4</option><option>5</option></select></div>
-      <div class="field"><label>Scale</label><select id="r4"><option selected>4-point</option><option>5-point</option></select></div>
-    </div>
-    <button class="btn" id="rb" onclick="call('/rubric',{assignment:g('r1'),grade:g('r2'),criteria:g('r3'),scale:g('r4')},'ro','rb','🧾 Generate Rubric')">🧾 Generate Rubric</button>
-    <div class="output-wrap"><div id="ro" class="output">Rubric will appear here...</div><button class="copy-btn" onclick="cp('ro')">📋 Copy</button></div>
-  </div></div>
-
-  <!-- 13. IMPROVE AI RESPONSE -->
-  <div id="refine" class="tab"><div class="card">
-    <h2>🔧 Improve AI Response</h2>
-    <p class="hint">Ask the AI to revise any answer — make it shorter, simpler, add accommodations, etc.</p>
-    <hr>
-    <div class="field"><label>AI Output to Improve</label><textarea id="rf1" rows="6" maxlength="4000" placeholder="Paste the AI response you want to improve..."></textarea><span class="char-counter"></span></div>
-    <div class="field"><label>What should be fixed?</label><input id="rf2" placeholder="e.g. make it shorter, add accommodations, simpler language"></div>
-    <button class="btn" id="rfb" onclick="call('/refine_response',{response:g('rf1'),request:g('rf2')},'rfo','rfb','🔧 Improve Response')">🔧 Improve Response</button>
-    <div class="output-wrap"><div id="rfo" class="output">Refined response will appear here...</div><button class="copy-btn" onclick="cp('rfo')">📋 Copy</button></div>
-  </div></div>
-
-  <!-- 14. CONTACT US -->
-  <div id="sitefb" class="tab"><div class="card">
-    <h2>⭐ Contact Us</h2>
-    <p>Have ideas, suggestions, or found a bug? We'd love to hear from you!</p>
-    <hr>
-    <p style="font-size:1.1em">📧 Email us at: <strong>admin@edusafeai.com</strong></p>
-  </div></div>
-
-</div>
-
-<div class="footer">
-  <strong>🛡️ EduSafeAI Hub</strong> | AI tools for K-12 educators worldwide <br>
-  🔒 EduSafeAI does not store student data. Please do not enter personally identifiable student information.<br>
-  <span style="font-size:.8em;color:#94a3b8">
-    ⚠️ AI-generated content may contain inaccuracies. 
-    This tool is for informational purposes only and does not constitute legal, medical, or professional advice. 
-    Always consult qualified professionals for official IEP, 504, or compliance decisions.
-  </span>
-</div>
+  </div>
+</footer>
 
 <script>
 const STATE_CONFIG = {{ state_config_json | safe }};
@@ -1695,6 +1954,133 @@ async function call(endpoint,data,outId,btnId,label){
 </script>
 </body>
 </html>"""
+
+PRIVACY_HTML = """<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Privacy Policy – EduSafe AI</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8F%AB%3C/text%3E%3C/svg%3E">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>html{scroll-behavior:smooth}</style>
+</head>
+<body class="font-sans text-gray-800 bg-white">
+
+<nav class="sticky top-0 z-50 bg-white shadow-sm border-b border-gray-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <a href="/" class="flex items-center gap-2 text-xl font-bold text-green-800 hover:text-green-600 transition-colors">
+        <span class="text-2xl">🛡️</span><span>EduSafe AI</span>
+      </a>
+      <a href="/" class="text-sm font-medium text-gray-600 hover:text-green-700 transition-colors">← Back to Home</a>
+    </div>
+  </div>
+</nav>
+
+<main class="max-w-3xl mx-auto px-4 py-16">
+  <h1 class="text-4xl font-extrabold text-gray-900 mb-2">Privacy Policy</h1>
+  <p class="text-gray-500 mb-10">Last updated: January 1, 2026 · Fresh Sky LLC</p>
+
+  <div class="prose prose-gray max-w-none space-y-8">
+
+    <section>
+      <h2 class="text-2xl font-bold text-gray-900 mb-3">1. Introduction</h2>
+      <p class="text-gray-700 leading-relaxed">Fresh Sky LLC ("we," "our," or "us") operates EduSafe AI at edusafeai.com. This Privacy Policy explains how we collect, use, and protect information when you use our platform. We are committed to protecting the privacy of students, educators, and all users of our services.</p>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-bold text-gray-900 mb-3">2. Information We Do Not Collect</h2>
+      <p class="text-gray-700 leading-relaxed mb-3">EduSafe AI is designed with a privacy-first architecture. We <strong>do not</strong>:</p>
+      <ul class="list-disc list-inside text-gray-700 space-y-1">
+        <li>Store student personally identifiable information (PII)</li>
+        <li>Retain user-submitted text, lesson plans, or student work after a session ends</li>
+        <li>Require user accounts or registration</li>
+        <li>Sell or share data with third parties for advertising purposes</li>
+        <li>Track individual users across sessions</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-bold text-gray-900 mb-3">3. Information We May Collect</h2>
+      <p class="text-gray-700 leading-relaxed mb-3">We may collect limited, anonymized technical information for operational purposes, including:</p>
+      <ul class="list-disc list-inside text-gray-700 space-y-1">
+        <li>Server access logs (IP addresses, request timestamps, HTTP status codes) retained for up to 30 days for security monitoring</li>
+        <li>Aggregate, non-identifiable usage statistics to improve platform performance</li>
+        <li>Error logs to diagnose and fix technical issues</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-bold text-gray-900 mb-3">4. FERPA Compliance</h2>
+      <p class="text-gray-700 leading-relaxed">EduSafe AI is designed to support FERPA compliance. We strongly advise all educators and school staff not to enter personally identifiable student information (names, student IDs, dates of birth, or other FERPA-protected data) into any text field on our platform. All AI prompts are processed in real time and are not stored after the response is returned.</p>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-bold text-gray-900 mb-3">5. Third-Party AI Services</h2>
+      <p class="text-gray-700 leading-relaxed">EduSafe AI uses third-party AI model providers (such as Groq) to process text inputs and generate responses. Inputs submitted to our platform may be transmitted to these providers to generate AI outputs. We encourage users to review the privacy policies of these providers. We do not transmit student names, school identifiers, or other PII to AI providers.</p>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-bold text-gray-900 mb-3">6. Cookies</h2>
+      <p class="text-gray-700 leading-relaxed">EduSafe AI does not use tracking cookies or advertising cookies. We may use essential session cookies necessary for the basic operation of the platform. These cookies do not contain personal information and expire at the end of your browser session.</p>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-bold text-gray-900 mb-3">7. Children's Privacy (COPPA)</h2>
+      <p class="text-gray-700 leading-relaxed">EduSafe AI is a tool for educators and school administrators — it is not directed at children under the age of 13. We do not knowingly collect personal information from children. Educators using this platform to support student learning should not enter student personal information into the platform.</p>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-bold text-gray-900 mb-3">8. Data Security</h2>
+      <p class="text-gray-700 leading-relaxed">We implement industry-standard security measures including HTTPS encryption for all data in transit. Given our no-storage-of-PII architecture, data security risks to student information are minimized by design.</p>
+    </section>
+
+    <section id="terms">
+      <h2 class="text-2xl font-bold text-gray-900 mb-3">9. Terms of Use</h2>
+      <p class="text-gray-700 leading-relaxed mb-3">By using EduSafe AI, you agree to the following:</p>
+      <ul class="list-disc list-inside text-gray-700 space-y-1">
+        <li>You will not enter personally identifiable student information into any platform field</li>
+        <li>You understand that AI-generated content may contain inaccuracies and requires professional review</li>
+        <li>You will not use EduSafe AI for any unlawful purpose</li>
+        <li>AI-generated IEP, 504, legal, or medical content is for informational purposes only and does not constitute professional advice</li>
+        <li>Fresh Sky LLC reserves the right to modify or discontinue the platform at any time</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-bold text-gray-900 mb-3">10. Disclaimer</h2>
+      <p class="text-gray-700 leading-relaxed">EduSafe AI is provided "as is" without warranty of any kind. AI-generated content may contain errors, omissions, or inaccuracies. This platform is for informational and educational support purposes only. It does not constitute legal, medical, psychological, or professional advice. Always consult qualified professionals for official IEP, 504, compliance, or legal decisions.</p>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-bold text-gray-900 mb-3">11. Changes to This Policy</h2>
+      <p class="text-gray-700 leading-relaxed">We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated revision date. Continued use of EduSafe AI after changes constitutes acceptance of the updated policy.</p>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-bold text-gray-900 mb-3">12. Contact Us</h2>
+      <p class="text-gray-700 leading-relaxed">If you have questions about this Privacy Policy, please contact us:</p>
+      <div class="mt-3 p-4 bg-gray-50 rounded-xl text-gray-700 text-sm">
+        <p><strong>Fresh Sky LLC</strong></p>
+        <p>📧 <a href="mailto:info@edusafeai.com" class="text-green-700 hover:underline">info@edusafeai.com</a></p>
+        <p>🇺🇸 United States</p>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="bg-gray-900 text-gray-400 py-8 mt-16">
+  <div class="max-w-6xl mx-auto px-4 text-center text-xs space-y-1">
+    <p class="text-white font-semibold">🛡️ EduSafe AI · Fresh Sky LLC</p>
+    <p>© 2026 Fresh Sky LLC · All rights reserved.</p>
+    <p><a href="/" class="hover:text-white transition-colors">Home</a> · <a href="/privacy" class="hover:text-white transition-colors">Privacy Policy</a></p>
+  </div>
+</footer>
+</body>
+</html>"""
+
 
 # ── ROUTES ───────────────────────────────────────────────────
 @app.route('/')
@@ -1908,6 +2294,11 @@ def do_refine_response():
         ))
     except Exception:
         return _internal_error()
+
+
+@app.route('/privacy')
+def privacy():
+    return render_template_string(PRIVACY_HTML)
 
 
 if __name__ == '__main__':
