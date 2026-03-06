@@ -1161,7 +1161,7 @@ select optgroup{font-weight:bold;color:var(--gd)}
 <body>
 <div class="header">
   <a href="/" style="color:inherit;text-decoration:none"><h1>🛡️ EduSafeAI Hub</h1></a>
-  <p><b>AI tools for K-12 educators worldwide</b></p>
+  <p><b>AI tools designed by educators for K-12 educators</b></p>
   <div class="badges">
     <span class="badge">🏫 Education-Ready</span>
     <span class="badge">♿ IEP & ELL Ready</span>
@@ -1547,7 +1547,7 @@ select optgroup{font-weight:bold;color:var(--gd)}
 </div>
 
 <div class="footer">
-  <strong>🛡️ EduSafeAI Hub</strong> | AI tools for K-12 educators worldwide <br>
+  <strong>🛡️ EduSafeAI Hub</strong> | AI tools for K-12 educators worldwide | Developed by Fresh Sky LLC<br>
   🔒 EduSafeAI does not store student data. Please do not enter personally identifiable student information.<br>
   <span style="font-size:.8em;color:#94a3b8">
     ⚠️ AI-generated content may contain inaccuracies. 
